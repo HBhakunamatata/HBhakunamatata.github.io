@@ -1,0 +1,48 @@
+# Git Use
+
+## local repository
+
+1.Create repository
+    - git config --global user.name "username"
+    - git config --global user.email "useremail"
+    - git init
+(The directory .git must not be changed casually)
+
+2.Manipulation
+    - git status
+    - git add filename1, filename2 ...
+    - git commit -m "comment"
+    
+3. Time machine
+    - git log
+    - git log --pretty=oneline
+    - git reflog
+    
+    - git reset --hard commentID
+
+## Remote repository (Github)
+
+1. two methods : https / ssh
+
+2. Approaches:
+    - add to stage
+        - git add filename
+    - add to local repository
+        - git commit -m "Comment"
+    - push to remote repository
+        - git push
+    - pull the latest code version
+        - git pull
+
+3. branch (crud)
+    - git branch branchname
+    - git branch -d branchname
+    - git merge branchname
+    - git branch
+
+4. Conflict
+    - git pull
+    - talk about the diff and figure out the result 
+    - then git add / git commit the result
+    - finally git merge  / git push .
+    
