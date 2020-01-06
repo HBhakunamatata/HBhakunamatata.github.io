@@ -1,24 +1,30 @@
 # Git Use
 
+- How to write a fix blog
+- anticipation/result
+- what's the problem
+- search
+- write a note
+
 ## local repository
 
 1.Create repository
-    - git config --global user.name "username"
-    - git config --global user.email "useremail"
-    - git init
-(The directory .git must not be changed casually)
+   - git config --global user.name "username"
+   - git config --global user.email "useremail"
+   - git init  
+    (The directory .git must not be changed casually)
 
-2.Manipulation
-    - git status
-    - git add filename1, filename2 ...
-    - git commit -m "comment"
-    
+2.Manipulation  
+   - git status
+   - git add filename1, filename2 ...
+   - git commit -m "comment"
+   
 3. Time machine
-    - git log
-    - git log --pretty=oneline
-    - git reflog
+   - git log
+   - git log --pretty=oneline
+   - git reflog
     
-    - git reset --hard commentID
+   - git reset --hard commentID
 
 ## Remote repository (Github)
 
