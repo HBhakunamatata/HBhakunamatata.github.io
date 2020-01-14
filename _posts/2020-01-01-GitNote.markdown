@@ -48,7 +48,6 @@
 
 4. Conflict
     - git pull
-    - talk about the diff and figure out the result 
+    - talk about the diff and figure out the result
     - then git add / git commit the result
     - finally git merge  / git push .
-    
