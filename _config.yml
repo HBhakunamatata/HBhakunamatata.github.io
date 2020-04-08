@@ -31,9 +31,29 @@ github_username:  jekyll
 
 # Build settings
 # theme: minima
-theme: jekyll-theme-slate
+# theme: jekyll-theme-slate
+theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed
+
+##########
+permalink: /posts/:title/
+texture:
+  title: Adam Denisov
+  tagline: Developer. Designer
+  date_format: "%b %-d, %Y"
+  style: black
+  showNav: false
+  showPicker: true
+
+  # generate social links in footer
+  social_links:
+    twitter: thelehhman
+    github:  thelehhman
+    linkedIn: in/thelehhman
+    rss: rss
+ #########
+
 
 # Exclude from processing.
 # The following items will not be processed, by default.
