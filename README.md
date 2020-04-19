@@ -8,8 +8,8 @@ and I added some new factors in my blog.
 - Use tags to classify posts
 
 ## Usage
-	- You can download jekyll themes on [website](http://jekyllthemes.org/) and custom it.
-	- If you are interested in my blog, you can fork this repo directly. 
+- You can download jekyll themes on [website](http://jekyllthemes.org/) and custom it.
+- If you are interested in my blog, you can fork this repo directly. 
 
 **Color Picker**
 
