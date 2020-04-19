@@ -1,14 +1,13 @@
 ---
 layout: post
-title:  "MavenNote"
+title:  "Maven Note"
 date:   2020-01-10
 description: An example post with decription.
 categories: Java Maven
 ---
 Describtion test
 
-
-# MavenNote
+# Maven Note
 
 ## 1.What is mvn
 
