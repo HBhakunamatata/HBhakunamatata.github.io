@@ -53,6 +53,6 @@ texture:
 
 ## Future works
 
-- Custom the footer
+- Custom the footer and Tags form
 - Make a more functional Navbar
 - Add functions to search post in terms of tags
