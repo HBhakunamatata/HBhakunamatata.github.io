@@ -1,6 +1,6 @@
 # My blog
 
-I established a blog based on **Texture**: [thelehhman.com/texture](https://thelehhman.com/texture)
+I established a blog based on [Texture](https://thelehhman.com/texture)
 and I added some new factors in my blog.
 
 ## Features
@@ -50,7 +50,6 @@ texture:
 - Home
 - Page
 - Post
-
 
 ## Future works
 
