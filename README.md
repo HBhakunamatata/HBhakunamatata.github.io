@@ -53,6 +53,7 @@ texture:
 
 ## Future works
 
+- Design a Logo
 - Custom the footer and Tags form
 - Make a more functional Navbar
 - Add functions to search post in terms of tags
