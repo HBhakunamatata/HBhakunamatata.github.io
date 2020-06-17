@@ -22,7 +22,7 @@ Describtion test
 
 - (1) Dependency Management System
   - There is only the reference of the Jar instead of whole Jar
-- (2)Deploy easily
+- (2) Deploy easily
 
 ## 3.Initialization
 
@@ -32,7 +32,7 @@ Describtion test
 
 ## 4.Repository
 
-- Projet ----> local repo ------> central repo
+- Project ----> local repo ------> central repo
 - Project ---> local repo ----> remote repo ---> central repo
 
 ## 5.Directory
