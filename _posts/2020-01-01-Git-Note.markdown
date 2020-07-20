@@ -19,30 +19,24 @@ how to use Git...
 
 1. Create repository
 
-```shell
-- git config --global user.name "username"
-- git config --global user.email "useremail"
-- git init
-```
+> - git config --global user.name "username"
+> - git config --global user.email "useremail"
+> - git init
 
 - (The directory .git must not be changed casually)
 
 1. Manipulation  
 
-```shell
-- git status
-- git add filename1, filename2 ...
-- git commit -m "comment"
-```
+> - git status
+> - git add filename1, filename2 ...
+> - git commit -m "comment"
 
-3. Time machine
+1. Time machine
 
-```shell
-- git log
-- git log --pretty=oneline
-- git reflog
-- git reset --hard commentID
-```
+> - git log
+> - git log --pretty=oneline
+> - git reflog
+> - git reset --hard commentID
 
 ## Remote repository (Github)
 
@@ -50,33 +44,25 @@ how to use Git...
 
 2. Approaches:
 
-```shell
 - (1) add to stage  
-    git add filename
+> git add filename
 - (2) add to local repository  
-    git commit -m "Comment"
+> git commit -m "Comment"
 - (3) push to remote repository
-    git push  
+> git push  
 - (4) pull the latest code version
-    git pull  
-```
+> git pull  
 
 3. branch (crud)
 
-```shell
-- git branch branchname  
-- git branch -d branchname  
-- git merge branchname  
-- git branch 
-``` 
+> - git branch branchname  
+> - git branch -d branchname  
+> - git merge branchname  
+> - git branch  
 
 4. Conflict
 
-```shell
-- git pull  
-- talk about the diff and figure out the result  
-- then git add / git commit the result  
-- finally git merge  / git push  
-```
-
-~~
+> - git pull  
+> - talk about the diff and figure out the result  
+> - then git add / git commit the result  
+> - finally git merge  / git push  ~~
