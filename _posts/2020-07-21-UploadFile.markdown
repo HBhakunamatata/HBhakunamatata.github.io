@@ -1,11 +1,10 @@
 ---
 layout: post
 title: "UploadFile in Tomcat"
-description: How to use upload a file in Tomcat
+description: How to upload a file in Tomcat
 date: 2020-07-21
 categories: Servlet
 ---
-How to use upload a file in Tomcat
 
 # UploadFile in Tomcat
 
