@@ -5,11 +5,9 @@ description:
 date: 2020-07-21
 categories: MyBatis, Maven
 ---
-The first experence of MyBatis
-How to learn a new technology
+The first experence of MyBatis  
+How to learn a new technology  
 build environment --> write java code --> test the result
-
-# MyBatis-01
 
 ## 1.What & why is MyBatis
 
@@ -105,7 +103,7 @@ public static SqlSession getSession() {
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--This file can be called 'EmployeeDao.xml'-->
-<mapper namespace="com.HB.dao.EmployeeDao">
+<mapper namespace="com.HB.dao.EmployeeDao">  // 必须全名
   <select id="getEmployees" resultType="com.HB.pojo.Employee">
     select * from employees limit 0, 5
   </select>
@@ -126,9 +124,15 @@ List<Employee> employees = mapper.getEmployees();
 
 ## Some mistakes (important)
 
-- 1. The access to the your subtype.xml __must__ add <build> setting in pom file.
-- 2. Do not forget register mapper of your subtype.xml
+- 1.The access to the your subtype.xml __must__ add <build> setting in pom file.  
+  //org.apache.ibatis.binding.BindingException: Type interface com.HB.dao.EmployeeDao is not known to the MapperRegistry.
+- 2.Do not forget register mapper of your subtype.xml
 > <mapper resource="com/HB/dao/employeeMapper.xml"></mapper>
-- 3. All .xml files use ```xml<?xml version="1.0" encoding="UTF-8" ?>```
-- 4. Take care of the url of mysql 8.0 and the param after ?  
+- 3.All .xml files use ```xml<?xml version="1.0" encoding="UTF-8" ?>```
+- 4.Take care of the url of mysql 8.0 and the param after ?  
+
+## 作用域（Scope） and Life Cycle
+
+- https://mybatis.org/mybatis-3/zh/getting-started.html
+
 ~~
