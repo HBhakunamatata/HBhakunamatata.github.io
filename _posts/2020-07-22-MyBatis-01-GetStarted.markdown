@@ -8,7 +8,6 @@ categories: MyBatis Maven
 The first experence of MyBatis  
 How to learn a new technology  
 build environment --> write java code --> test the result
-Thanks QinJiang
 
 ## 1.What & why is MyBatis
 
@@ -142,4 +141,4 @@ you must use '.'
 
 
 
-Thanks QinJiang
+Thanks [QinJiang](https://space.bilibili.com/95256449?spm_id_from=333.788.b_765f7570696e666f.2)

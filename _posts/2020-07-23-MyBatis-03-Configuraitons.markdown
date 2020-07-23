@@ -5,7 +5,7 @@ description:
 date: 2020-07-23
 categories: MyBatis Maven
 ---
-Configuraiton in mybatis-config.xml
+Configuraitons in mybatis-config.xml  
 [https://mybatis.org/mybatis-3/zh/configuration.html](https://mybatis.org/mybatis-3/zh/configuration.html)
 
 ## The order of the tags
