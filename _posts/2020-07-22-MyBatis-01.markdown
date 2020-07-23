@@ -11,8 +11,8 @@ build environment --> write java code --> test the result
 
 ## 1.What & why is MyBatis
 
-- [Website(important)] (https://mybatis.org/mybatis-3/zh/index.html)
-- [Github] (https://github.com/mybatis/mybatis-3)
+- [Website(important)](https://mybatis.org/mybatis-3/zh/index.html)
+- [Github](https://github.com/mybatis/mybatis-3)
 - MyBatis can simplify and automize the code of JDBC.
 - MyBatis is a persistence framework
   - RAM <----> ROM
@@ -128,6 +128,10 @@ List<Employee> employees = mapper.getEmployees();
   //org.apache.ibatis.binding.BindingException: Type interface com.HB.dao.EmployeeDao is not known to the MapperRegistry.
 - 2.Do not forget register mapper of your subtype.xml
 > <mapper resource="com/HB/dao/employeeMapper.xml"></mapper>
+and  you must use '/' in resource instead of '.'
+while 
+> <mapper namespace="com.HB.dao.EmployeeMapper">
+you must use '.'
 - 3.All .xml files use ```xml<?xml version="1.0" encoding="UTF-8" ?>```
 - 4.Take care of the url of mysql 8.0 and the param after ?  
 
