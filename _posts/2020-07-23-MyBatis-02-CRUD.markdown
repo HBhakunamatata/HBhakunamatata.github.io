@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ""CRUD in MyBatis"
+title: "CRUD in MyBatis"
 description: 
 date: 2020-07-22
 categories: MyBatis Maven
