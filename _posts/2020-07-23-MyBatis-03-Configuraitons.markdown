@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ""Configurations in MyBatis"
+title: "Configurations in MyBatis"
 description: 
 date: 2020-07-23
 categories: MyBatis Maven
