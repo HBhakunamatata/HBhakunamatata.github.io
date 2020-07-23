@@ -2,7 +2,7 @@
 layout: post
 title:  "Maven Note"
 date:   2020-01-10
-description: An example post with decription.
+description:
 categories: Java Maven
 ---
 Describtion test

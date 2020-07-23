@@ -125,4 +125,4 @@ we can form a _customized_ Map to operate the specific columns.
 - (2) After the sql operators [insert|update|delete], you must
 > sqlSession.commit();
 
-~Thanks QinJiang~
+Thanks [QinJiang](https://space.bilibili.com/95256449?spm_id_from=333.788.b_765f7570696e666f.2)
