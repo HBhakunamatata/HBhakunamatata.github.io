@@ -1,4 +1,11 @@
-CRUD and Configuration in mybatis-config.xml
+---
+layout: post
+title: ""CRUD in MyBatis"
+description: 
+date: 2020-07-22
+categories: MyBatis Maven
+---
+implement CRUD in MyBatis
 
 ## 1. Mapper.xml
 
@@ -117,3 +124,5 @@ we can form a _customized_ Map to operate the specific columns.
         (This can be obvious when use a map.)
 - (2) After the sql operators [insert|update|delete], you must
 > sqlSession.commit();
+
+~Thanks QinJiang~

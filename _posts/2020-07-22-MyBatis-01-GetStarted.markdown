@@ -3,11 +3,12 @@ layout: post
 title: "MyBatis-01"
 description: 
 date: 2020-07-21
-categories: MyBatis, Maven
+categories: MyBatis Maven
 ---
 The first experence of MyBatis  
 How to learn a new technology  
 build environment --> write java code --> test the result
+Thanks QinJiang
 
 ## 1.What & why is MyBatis
 
@@ -139,4 +140,4 @@ you must use '.'
 
 - https://mybatis.org/mybatis-3/zh/getting-started.html
 
-~~
+~Thanks QinJiang~

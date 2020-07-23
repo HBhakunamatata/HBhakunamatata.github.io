@@ -1,3 +1,10 @@
+---
+layout: post
+title: ""Configurations in MyBatis"
+description: 
+date: 2020-07-23
+categories: MyBatis Maven
+---
 Configuraiton in mybatis-config.xml
 [https://mybatis.org/mybatis-3/zh/configuration.html](https://mybatis.org/mybatis-3/zh/configuration.html)
 
@@ -109,5 +116,6 @@ or
 </settings>
 ```
 
-## Others ... 
-~~
+## Others ...
+
+~Thanks QinJiang~
