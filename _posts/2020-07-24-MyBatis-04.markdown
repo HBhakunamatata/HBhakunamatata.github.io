@@ -2,11 +2,122 @@
 layout: post
 title: "MyBatis-04 Logger and Limiter"
 description: 
-date: 2020-07-24
+date: 2020-07-25
 categories: MyBatis Maven Log4J
 ---
+Use Log4J to record the state and Lombok to simplify the pojo.
+There are several methods to implement the limiter in MyBatis.
 
-## 1. Log4J
+## 1. Limiter
+
+- Why limiter?
+    - To reduce the data that required to be dealed with.
+
+- (1) Registe method
+
+```
+List<Employee> getEmpByLimit01(Map<String, Integer> map);
+
+<select id="getEmpByLimit01" parameterType="map" resultMap="empResultMap">
+    select * from employees limit #{startIndex}, #{pageSize}
+</select>
+
+```
+
+(2) test the result
+
+```java
+@org.junit.Test
+public void getEmpByLimit() {
+    SqlSession sqlSession = MyBatisUtils.getSqlSession();
+    EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
+
+    Map<String, Integer> map = new HashMap<>();
+    map.put("startIndex", 0);
+    map.put("pageSize", 5);
+    List<Employee> employeeList = mapper.getEmpByLimit01(map);
+    for (Employee emp : employeeList) {
+        logger.info(emp);
+    }
+    sqlSession.close();
+}
+```
+
+### Another method : PageHelper 
+
+- [How to use pagehelper](https://pagehelper.github.io/docs/howtouse/)
+- There is no need to modify the sql statement, just add one line before get pojos in .java
+
+- (1) add maven dependency
+
+```xml
+<!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper -->
+<dependency>
+    <groupId>com.github.pagehelper</groupId>
+    <artifactId>pagehelper</artifactId>
+    <version>5.1.10</version>
+</dependency>
+```
+
+(2) add plugin in mybatis-config.xml
+
+```xml
+<plugins>
+    <plugin interceptor="com.github.pagehelper.PageInterceptor">
+    </plugin>
+</plugins>
+```
+
+(3) Test two common ways to use PageHelper
+
+```java
+@org.junit.Test
+    public void testPageHelper () {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
+        PageHelper.startPage(2, 5);
+        List<Employee> employees = mapper.getEmployees();
+        for (Employee emp : employees) {
+            logger.info(emp);
+        }
+
+        logger.info("==============================================");
+
+        PageHelper.offsetPage(2, 5);
+        employees = mapper.getEmployees();
+        for (Employee emp : employees) {
+            logger.info(emp);
+        }
+
+        sqlSession.close();
+    }
+```
+
+
+## 2. Lombok
+
+```xml
+<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.12</version>
+</dependency>
+```
+
+```java
+@Data
+public class Employee {
+    private int emp_no;
+    private Date birth_date;
+    private String first_name;
+    private String last_name;
+    private String gender;
+    private Date hire_date;
+}
+```
+
+## 2. Log4J
 
 ### (1) add maven dependency
 
@@ -51,7 +162,6 @@ log4j.logger.java.sq1.PreparedStatement=DEBUG
 static Logger logger = Logger.getLogger(Test.class);
 logger.info("employee No." + employee.getEmp_no() + " has been found.");
 ```
-
 
 
 Thanks [QinJiang](https://space.bilibili.com/95256449?spm_id_from=333.788.b_765f7570696e666f.2)
