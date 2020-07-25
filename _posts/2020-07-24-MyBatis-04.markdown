@@ -1,6 +1,12 @@
+---
+layout: post
+title: "MyBatis-04 Logger and Limiter"
+description: 
+date: 2020-07-24
+categories: MyBatis Maven Log4J
+---
 
-
-## Log4J
+## 1. Log4J
 
 ### (1) add maven dependency
 

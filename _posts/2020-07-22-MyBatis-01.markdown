@@ -1,12 +1,11 @@
 ---
 layout: post
-title: "MyBatis-01"
-description: 
+title: "MyBatis-01 GetStarted"
+description: The first experence of MyBatis
 date: 2020-07-21
 categories: MyBatis Maven
----
-The first experence of MyBatis  
-How to learn a new technology  
+--- 
+How to learn a new technology:  
 build environment --> write java code --> test the result
 
 ## 1.What & why is MyBatis
