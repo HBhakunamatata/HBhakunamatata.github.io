@@ -5,6 +5,7 @@ description:
 date: 2020-07-26
 categories: Maven MyBatis
 ---
+Use cache mechanism in MyBatis
 
 # Cache
 
