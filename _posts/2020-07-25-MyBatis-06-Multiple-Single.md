@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "MyBatis-06 multiple-single"
+title: "MyBatis-06 Multiple--Single"
 description: 
 date: 2020-07-25
 categories: Maven MyBatis
