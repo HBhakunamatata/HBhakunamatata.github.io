@@ -118,8 +118,8 @@ we can form a _customized_ Map to operate the specific columns.
 ## 3. Notes (important)
 
 - (1) [operators] sqlstatements [settings] #{fields}
-    - names in sqlstate <-----> sqldatabase columns
-    - The #{field name} <--------> methods params or fields in jopo  
+    - names in sqlstate <------> sqldatabase columns
+    - The #{field name} <------> methods params or fields in jopo  
         (just the same as parameterType/resultType)  
         (This can be obvious when use a map.)
 - (2) After the sql operators [insert|update|delete], you must

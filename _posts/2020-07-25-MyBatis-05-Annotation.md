@@ -5,7 +5,7 @@ description:
 date: 2020-07-25
 categories: Maven MyBatis
 ---
-implementing CRUD using annotation
+implementing CRUD using annotation (Reflection)
 
 ## CRUD using annotation
 

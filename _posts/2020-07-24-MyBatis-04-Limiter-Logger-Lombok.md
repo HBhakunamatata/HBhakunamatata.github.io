@@ -96,6 +96,8 @@ public void getEmpByLimit() {
 
 ## 2. Lombok
 
+- Lombok can reduce the quality of code.
+
 ```xml
 <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 <dependency>
@@ -118,6 +120,8 @@ public class Employee {
 ```
 
 ## 2. Log4J
+
+- Logger can help us to find the SQL error easily.
 
 ### (1) add maven dependency
 
