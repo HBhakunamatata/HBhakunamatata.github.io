@@ -1,0 +1,45 @@
+---
+layout: post
+title:  "Spring-04 Autowire"
+description: 
+date:   2020-07-27
+categories: Spring Autowire
+---
+Autowiring is a kind of DI to simplify the register of beans.
+
+
+由于在手动配置xml过程中，常常发生字母缺漏和大小写等错误，而无法对其进行检查，使得开发效率降低。
+采用自动装配将避免这些错误，并且使配置简单化。
+
+## 1. Autowire with .xml file
+
+- Write the People.class
+
+```java
+public class People {
+    private Cat cat;
+    private Dog dog;
+
+    public Cat getCat() {
+        return cat;
+    }
+
+    public void setCat(Cat cat) {
+        this.cat = cat;
+    }
+
+    public Dog getDog() {
+        return dog;
+    }
+
+    public void setDog(Dog dog) {
+        this.dog = dog;
+    }
+}
+```
+
+- (1) byName
+
+```xml
+
+```
