@@ -93,7 +93,7 @@ public class People {
 }
 ```
 
-## @Resource (recommended)
+## 3. @Resource (recommended)
 
 - @Resource如有指定的name属性，先按该属性进行byName方式查找装配
 - 如果没有就按照默认的byName方式进行装配
@@ -179,7 +179,7 @@ XML可以适用任何场景 ，结构清晰，维护方便
 
 注解不是自己提供的类使用不了，开发简单方便  
 
-xml与注解整合开发 ：推荐最佳实践  
+xml与注解整合开发：推荐最佳实践  
 
 xml管理Bean  
 
@@ -196,3 +196,54 @@ xml管理Bean
 如果不扫描包，就需要手动配置bean  
 
 如果不加注解驱动，则注入的值为null！  
+
+
+## JavaConfig
+
+- No matter the choice, Spring can accommodate both styles and even mix them together. 
+It is worth pointing out that through its JavaConfig option.(No need to write xml)
+- We use _AnnotationConfigApplicationContext_ to load the beans.
+
+
+- (1) Create MyConfig01.java and it can import another Config.java
+
+```java
+// MyConfig01.java
+@Configuration
+@Import(MyConfig02.class)
+public class MyConfig01 {
+
+    @Bean
+    public Dog dog222(){   // 装配的名字是方法名
+        return new Dog();
+    }
+}
+
+// MyConfig02.java
+@Configuration
+public class MyConfig02 {
+
+    @Bean
+    public Cat cat222(){
+        return new Cat();
+    }
+}
+```
+
+- (2) Test the result
+
+```java
+    @Test
+    public void test04(){
+        // Notice we use AnnotationConfigApplicationContext!
+        ApplicationContext context = new AnnotationConfigApplicationContext(MyConfig01.class);
+        Dog dog222 = context.getBean("dog222", Dog.class);
+        dog222.shout();
+        Cat cat222 = context.getBean("cat222", Cat.class);
+        cat222.shout();
+    }
+``` 
+
+
+
+Thanks [QinJiang](https://space.bilibili.com/95256449?spm_id_from=333.788.b_765f7570696e666f.2)
