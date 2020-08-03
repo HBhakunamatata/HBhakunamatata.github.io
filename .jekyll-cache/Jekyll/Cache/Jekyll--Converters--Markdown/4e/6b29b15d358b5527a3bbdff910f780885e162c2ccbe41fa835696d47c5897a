@@ -1,0 +1,124 @@
+I"D&<p>Static and Dynamic Proxy</p>
+
+<ul>
+  <li>a pic to illustrate Proxy Pattern</li>
+</ul>
+
+<p><img src="/image/spring/Proxy.jpg" alt="Proxy" /></p>
+
+<h2 id="1-interface--rent">1. Interface : Rent</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Rent</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">rentHouse</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="2-static-proxy">2. Static Proxy</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// static proxy</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HouseAgency</span> <span class="kd">implements</span> <span class="nc">Rent</span><span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">Rent</span> <span class="n">rent</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">HouseAgency</span><span class="o">()</span> <span class="o">{</span> <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">HouseAgency</span> <span class="o">(</span><span class="nc">Rent</span> <span class="n">rent</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">rent</span> <span class="o">=</span> <span class="n">rent</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setRent</span><span class="o">(</span><span class="nc">Rent</span> <span class="n">rent</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">rent</span> <span class="o">=</span> <span class="n">rent</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">rentHouse</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Now agency takes over..."</span><span class="o">);</span>
+        <span class="n">showHouse</span><span class="o">();</span>
+        <span class="n">rent</span><span class="o">.</span><span class="na">rentHouse</span><span class="o">();</span>
+        <span class="n">signContract</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Now agency ends..."</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showHouse</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Show house to client"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">signContract</span> <span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Sign a contract"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Dynamic Proxy</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RentHandler</span> <span class="kd">implements</span> <span class="nc">InvocationHandler</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">Object</span> <span class="n">proxied</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setProxied</span><span class="o">(</span><span class="nc">Object</span> <span class="n">proxied</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">proxied</span> <span class="o">=</span> <span class="n">proxied</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Object</span> <span class="nf">invoke</span><span class="o">(</span><span class="nc">Object</span> <span class="n">proxy</span><span class="o">,</span> <span class="nc">Method</span> <span class="n">method</span><span class="o">,</span> <span class="nc">Object</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Throwable</span> <span class="o">{</span>
+
+        <span class="n">showHouse</span><span class="o">();</span>
+        <span class="n">method</span><span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="n">proxied</span><span class="o">,</span> <span class="n">args</span><span class="o">);</span>
+        <span class="n">signContract</span><span class="o">();</span>
+
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showHouse</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Show house to client"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">signContract</span> <span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Sign a contract"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">Object</span> <span class="nf">getProxy</span> <span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">Proxy</span><span class="o">.</span><span class="na">newProxyInstance</span><span class="o">(</span>
+                <span class="nc">Rent</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getClassLoader</span><span class="o">(),</span>
+                <span class="k">new</span> <span class="nc">Class</span><span class="o">[]</span> <span class="o">{</span><span class="nc">Rent</span><span class="o">.</span><span class="na">class</span><span class="o">},</span>
+                <span class="k">this</span>
+        <span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Test.class</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">staticProxy</span> <span class="o">()</span> <span class="o">{</span>
+
+    <span class="nc">Client</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Client</span><span class="o">();</span>
+
+    <span class="nc">Rent</span> <span class="n">houseOwner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HouseOwner</span><span class="o">();</span>
+
+    <span class="nc">Rent</span> <span class="n">agency</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HouseAgency</span><span class="o">(</span><span class="n">houseOwner</span><span class="o">);</span>
+
+    <span class="n">agency</span><span class="o">.</span><span class="na">rentHouse</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dynamicProxy</span> <span class="o">()</span> <span class="o">{</span>
+
+    <span class="nc">Rent</span> <span class="n">houseOwner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HouseOwner</span><span class="o">();</span>
+
+    <span class="nc">RentHandler</span> <span class="n">rentHandler</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RentHandler</span><span class="o">();</span>
+
+    <span class="n">rentHandler</span><span class="o">.</span><span class="na">setProxied</span><span class="o">(</span><span class="n">houseOwner</span><span class="o">);</span>
+
+    <span class="nc">Rent</span> <span class="n">proxy</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Rent</span><span class="o">)</span> <span class="n">rentHandler</span><span class="o">.</span><span class="na">getProxy</span><span class="o">();</span>
+
+    <span class="n">proxy</span><span class="o">.</span><span class="na">rentHouse</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Thanks <a href="https://space.bilibili.com/95256449?spm_id_from=333.788.b_765f7570696e666f.2">QinJiang</a></p>
+:ET

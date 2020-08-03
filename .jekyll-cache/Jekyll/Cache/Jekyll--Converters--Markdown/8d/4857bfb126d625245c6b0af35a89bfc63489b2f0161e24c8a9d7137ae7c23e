@@ -1,0 +1,125 @@
+I"�<p>implement CRUD in MyBatis</p>
+
+<h2 id="1-mapperxml">1. Mapper.xml</h2>
+
+<ul>
+  <li>(1) namespace : the name of interface in Dao</li>
+  <li>(2) id : the specific method in interface</li>
+  <li>(3) parameterType : the type of parameter (No need when it is primitive)</li>
+  <li>(4) resultType / resultMap : the type of result for SQL statement</li>
+</ul>
+
+<h2 id="2-crud-in-mybatis">2. CRUD in Mybatis</h2>
+
+<h3 id="1-preparing-methods-in-interface">(1) Preparing methods in interface</h3>
+
+<p>You need to statement the methods in dao.EmployeesMappper.java</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">EmployeeMapper</span> <span class="o">{</span>
+
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Employee</span><span class="o">&gt;</span> <span class="nf">getEmployees</span><span class="o">();</span>
+
+    <span class="c1">// query employees according to id</span>
+    <span class="nc">Employee</span> <span class="nf">getEmployeesById</span><span class="o">(</span><span class="kt">int</span> <span class="n">emp_no</span><span class="o">);</span>
+
+    <span class="c1">// insert an employee</span>
+    <span class="kt">int</span> <span class="nf">insertEmployee</span><span class="o">(</span><span class="nc">Employee</span> <span class="n">employee</span><span class="o">);</span>
+
+    <span class="c1">// update an employee</span>
+    <span class="kt">int</span> <span class="nf">updateEmployee</span><span class="o">(</span><span class="nc">Employee</span> <span class="n">employee</span><span class="o">);</span>
+
+    <span class="c1">// delete an employee</span>
+    <span class="kt">int</span> <span class="nf">deleteEmployee</span><span class="o">(</span><span class="kt">int</span> <span class="n">emp_no</span><span class="o">);</span>
+
+    <span class="c1">// update with a map</span>
+    <span class="kt">int</span> <span class="nf">updateWithMap</span> <span class="o">(</span><span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;</span> <span class="n">map</span><span class="o">);</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="2-select">(2) select</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"getEmployeesById"</span> <span class="na">parameterType=</span><span class="s">"int"</span> <span class="na">resultType=</span><span class="s">"com.HB.pojo.Employee"</span><span class="nt">&gt;</span>
+    select * from employees where emp_no = #{emp_no}
+<span class="nt">&lt;/select&gt;</span>
+</code></pre></div></div>
+
+<h3 id="3-insert">(3) insert</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;insert</span> <span class="na">id=</span><span class="s">"insertEmployee"</span> <span class="na">parameterType=</span><span class="s">"com.HB.pojo.Employee"</span><span class="nt">&gt;</span>
+    insert into employees
+    (emp_no, birth_date, first_name, last_name, gender, hire_date)
+    values
+    (#{emp_no}, #{birthdate}, #{firstname}, #{lastname}, #{gender}, #{hiredate})
+<span class="nt">&lt;/insert&gt;</span>
+</code></pre></div></div>
+
+<h3 id="4-update">(4) update</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;update</span> <span class="na">id=</span><span class="s">"updateEmployee"</span> <span class="na">parameterType=</span><span class="s">"com.HB.pojo.Employee"</span><span class="nt">&gt;</span>
+    update employees set
+        birth_date = #{birthdate},
+        first_name = #{firstname},
+        last_name = #{lastname},
+        gender = #{gender},
+        hire_date = #{hiredate}
+    where emp_no = #{emp_no}
+<span class="nt">&lt;/update&gt;</span>
+</code></pre></div></div>
+
+<h3 id="5-delete">(5) delete</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;delete</span> <span class="na">id=</span><span class="s">"deleteEmployee"</span> <span class="na">parameterType=</span><span class="s">"int"</span><span class="nt">&gt;</span>
+    delete from employees where emp_no = #{emp_no}
+<span class="nt">&lt;/delete&gt;</span>
+</code></pre></div></div>
+
+<h3 id="6-awesome-map">(6) Awesome Map</h3>
+
+<p>When the sql statment is too long due to the massive columns,<br />
+we can form a <em>customized</em> Map to operate the specific columns.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;update</span> <span class="na">id=</span><span class="s">"updateWithMap"</span> <span class="na">parameterType=</span><span class="s">"map"</span><span class="nt">&gt;</span>
+    update employees set
+        first_name = #{randomnameA},
+        last_name = #{randomnameB}
+    where emp_no = #{randomNum}
+  <span class="nt">&lt;/update&gt;</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testMap</span> <span class="o">()</span> <span class="o">{</span>
+        <span class="nc">SqlSession</span> <span class="n">session</span> <span class="o">=</span> <span class="nc">MyBatisUtils</span><span class="o">.</span><span class="na">getSession</span><span class="o">();</span>
+
+        <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"randomnameA"</span><span class="o">,</span> <span class="s">"Yalong"</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"randomnameB"</span><span class="o">,</span> <span class="s">"Sun"</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"randomNum"</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+
+        <span class="nc">EmployeeMapper</span> <span class="n">mapper</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="na">getMapper</span><span class="o">(</span><span class="nc">EmployeeMapper</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">mapper</span><span class="o">.</span><span class="na">updateWithMap</span><span class="o">(</span><span class="n">map</span><span class="o">);-</span>
+
+        <span class="n">session</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span>
+        <span class="n">session</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="3-notes-important">3. Notes (important)</h2>
+
+<ul>
+  <li>(1) [operators] sqlstatements [settings] #{fields}
+    <ul>
+      <li>names in sqlstate &lt;——&gt; sqldatabase columns</li>
+      <li>The #{field name} &lt;——&gt; methods params or fields in jopo<br />
+  (just the same as parameterType/resultType)<br />
+  (This can be obvious when use a map.)</li>
+    </ul>
+  </li>
+  <li>(2) After the sql operators [insert|update|delete], you must
+    <blockquote>
+      <p>sqlSession.commit();</p>
+    </blockquote>
+  </li>
+</ul>
+
+<p>Thanks <a href="https://space.bilibili.com/95256449?spm_id_from=333.788.b_765f7570696e666f.2">QinJiang</a></p>
+:ET

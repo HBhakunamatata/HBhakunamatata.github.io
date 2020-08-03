@@ -1,0 +1,164 @@
+I"�5<p>Use Log4J to record the state and Lombok to simplify the pojo.<br />
+There are several methods to implement the limiter in MyBatis.</p>
+
+<h2 id="1-limiter">1. Limiter</h2>
+
+<ul>
+  <li>Why limiter?
+    <ul>
+      <li>To reduce the data that required to be dealed with.</li>
+    </ul>
+  </li>
+  <li>(1) Registe method</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>List&lt;Employee&gt; getEmpByLimit01(Map&lt;String, Integer&gt; map);
+
+&lt;select id="getEmpByLimit01" parameterType="map" resultMap="empResultMap"&gt;
+    select * from employees limit #{startIndex}, #{pageSize}
+&lt;/select&gt;
+
+</code></pre></div></div>
+
+<p>(2) test the result</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@org</span><span class="o">.</span><span class="na">junit</span><span class="o">.</span><span class="na">Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getEmpByLimit</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">SqlSession</span> <span class="n">sqlSession</span> <span class="o">=</span> <span class="nc">MyBatisUtils</span><span class="o">.</span><span class="na">getSqlSession</span><span class="o">();</span>
+    <span class="nc">EmployeeMapper</span> <span class="n">mapper</span> <span class="o">=</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">getMapper</span><span class="o">(</span><span class="nc">EmployeeMapper</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+    <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"startIndex"</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"pageSize"</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Employee</span><span class="o">&gt;</span> <span class="n">employeeList</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="na">getEmpByLimit01</span><span class="o">(</span><span class="n">map</span><span class="o">);</span>
+    <span class="k">for</span> <span class="o">(</span><span class="nc">Employee</span> <span class="n">emp</span> <span class="o">:</span> <span class="n">employeeList</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="n">emp</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="n">sqlSession</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="another-method--pagehelper">Another method : PageHelper</h3>
+
+<ul>
+  <li><a href="https://pagehelper.github.io/docs/howtouse/">How to use pagehelper</a></li>
+  <li>
+    <p>There is no need to modify the sql statement, just add one line before get pojos in .java</p>
+  </li>
+  <li>(1) add maven dependency</li>
+</ul>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper --&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>com.github.pagehelper<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>pagehelper<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>5.1.10<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div>
+
+<p>(2) add plugin in mybatis-config.xml</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;plugins&gt;</span>
+    <span class="nt">&lt;plugin</span> <span class="na">interceptor=</span><span class="s">"com.github.pagehelper.PageInterceptor"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/plugin&gt;</span>
+<span class="nt">&lt;/plugins&gt;</span>
+</code></pre></div></div>
+
+<p>(3) Test two common ways to use PageHelper</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@org</span><span class="o">.</span><span class="na">junit</span><span class="o">.</span><span class="na">Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testPageHelper</span> <span class="o">()</span> <span class="o">{</span>
+        <span class="nc">SqlSession</span> <span class="n">sqlSession</span> <span class="o">=</span> <span class="nc">MyBatisUtils</span><span class="o">.</span><span class="na">getSqlSession</span><span class="o">();</span>
+        <span class="nc">EmployeeMapper</span> <span class="n">mapper</span> <span class="o">=</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">getMapper</span><span class="o">(</span><span class="nc">EmployeeMapper</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="nc">PageHelper</span><span class="o">.</span><span class="na">startPage</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Employee</span><span class="o">&gt;</span> <span class="n">employees</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="na">getEmployees</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nc">Employee</span> <span class="n">emp</span> <span class="o">:</span> <span class="n">employees</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="n">emp</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"=============================================="</span><span class="o">);</span>
+
+        <span class="nc">PageHelper</span><span class="o">.</span><span class="na">offsetPage</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
+        <span class="n">employees</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="na">getEmployees</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nc">Employee</span> <span class="n">emp</span> <span class="o">:</span> <span class="n">employees</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="n">emp</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="n">sqlSession</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="2-lombok">2. Lombok</h2>
+
+<ul>
+  <li>Lombok can reduce the quality of code.</li>
+</ul>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- https://mvnrepository.com/artifact/org.projectlombok/lombok --&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.projectlombok<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>lombok<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.18.12<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Data</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Employee</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">emp_no</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Date</span> <span class="n">birth_date</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">first_name</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">last_name</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">gender</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Date</span> <span class="n">hire_date</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="2-log4j">2. Log4J</h2>
+
+<ul>
+  <li>Logger can help us to find the SQL error easily.</li>
+</ul>
+
+<h3 id="1-add-maven-dependency">(1) add maven dependency</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>log4j<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>log4j<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.2.17<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div>
+
+<h3 id="2-add-log4jproperties">(2) add log4j.properties</h3>
+
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 将等级为DEBUG的日志信息输出到console和file这两个目的地，console和file的定义在下面的代码
+</span><span class="py">log4j.rootLogger</span><span class="p">=</span><span class="s">DEBUG,console,file</span>
+
+<span class="c"># 控制台输出的相关设置
+</span><span class="py">log4j.appender.console</span> <span class="p">=</span> <span class="s">org.apache.log4j.ConsoleAppender</span>
+<span class="py">log4j.appender.console.Target</span> <span class="p">=</span> <span class="s">System.out</span>
+<span class="py">log4j.appender.console.Threshold</span><span class="p">=</span><span class="s">DEBUG</span>
+<span class="py">log4j.appender.console.layout</span> <span class="p">=</span> <span class="s">org.apache.log4j.PatternLayout</span>
+<span class="py">log4j.appender.console.layout.ConversionPattern</span><span class="p">=</span><span class="s">[%c]-%m%n</span>
+<span class="c"># 文件输出的相关设置
+</span><span class="py">log4j.appender.file</span> <span class="p">=</span> <span class="s">org.apache.log4j.RollingFileAppender</span>
+<span class="py">log4j.appender.file.File</span><span class="p">=</span><span class="s">./log/rzp.log</span>
+<span class="py">log4j.appender.file.MaxFileSize</span><span class="p">=</span><span class="s">10mb</span>
+<span class="py">log4j.appender.file.Threshold</span><span class="p">=</span><span class="s">DEBUG</span>
+<span class="py">log4j.appender.file.layout</span><span class="p">=</span><span class="s">org.apache.log4j.PatternLayout</span>
+<span class="py">log4j.appender.file.layout.ConversionPattern</span><span class="p">=</span><span class="s">[%p][%d{yy-MM-dd}][%c]%m%n</span>
+<span class="c"># 日志输出级别
+</span><span class="py">log4j.logger.org.mybatis</span><span class="p">=</span><span class="s">DEBUG</span>
+<span class="py">log4j.logger.java.sql</span><span class="p">=</span><span class="s">DEBUG</span>
+<span class="py">log4j.logger.java.sql.Statement</span><span class="p">=</span><span class="s">DEBUG</span>
+<span class="py">log4j.logger.java.sql.ResultSet</span><span class="p">=</span><span class="s">DEBUG</span>
+<span class="py">log4j.logger.java.sq1.PreparedStatement</span><span class="p">=</span><span class="s">DEBUG</span>
+</code></pre></div></div>
+
+<h3 id="3-use-the-logger">(3) Use the Logger</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">static</span> <span class="nc">Logger</span> <span class="n">logger</span> <span class="o">=</span> <span class="nc">Logger</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">Test</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"employee No."</span> <span class="o">+</span> <span class="n">employee</span><span class="o">.</span><span class="na">getEmp_no</span><span class="o">()</span> <span class="o">+</span> <span class="s">" has been found."</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Thanks <a href="https://space.bilibili.com/95256449?spm_id_from=333.788.b_765f7570696e666f.2">QinJiang</a></p>
+:ET

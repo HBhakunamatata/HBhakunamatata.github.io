@@ -1,0 +1,133 @@
+I"�<p>Inversion of control is a way to produce or obtain specific objects 
+through description (XML or annotation) and through a third party.</p>
+
+<h2 id="spring-overview">Spring Overview</h2>
+
+<ul>
+  <li>
+    <ol>
+      <li>Features</li>
+    </ol>
+
+    <ul>
+      <li>(1) Spring is a free and <em>open-source</em> container.</li>
+      <li>(2) light-weight and non-invasive codes.</li>
+      <li>(3) IoC and AOP</li>
+      <li>(4) Affairs</li>
+      <li>(5) Aggregation with other framework</li>
+    </ul>
+  </li>
+  <li>
+    <ol>
+      <li>Composition of Spring</li>
+    </ol>
+  </li>
+</ul>
+
+<p><img src="/image/Spring/composition.png" alt="composition" /></p>
+
+<h2 id="the-reasoning-of-ioc-inversion-of-control">The reasoning of IoC (Inversion of Control)</h2>
+
+<ul>
+  <li>
+    <ol>
+      <li><a href="https://mp.weixin.qq.com/s/VM6INdNB_hNfXCMq3UZgTQ">The article illustrating IoC</a> (important)</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>The comparison of previous method with IoC to create objects</li>
+    </ol>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EmpServletImpl</span> <span class="kd">implements</span> <span class="nc">EmpServlet</span> <span class="o">{</span>
+
+    <span class="cm">/* 原来的方法：强耦合
+      Servlet层想要使用Dao层的实现类时需要
+      在Servlet实现类中创建DaoImpl对象,
+    EmpDao empDao = new EmpDaoMySQL();
+      但是，如果使用不同的DaoImpl那么就需要
+      创建新的EmpImpl对象
+    EmpDao empDao2 = new EmpDaoOracle();
+      问题：EmpImpl对象在Servlet中是写死的，
+        不能动态创建，修改代码的代价非常大。
+     */</span>
+
+    <span class="c1">// 所以需要使用动态创建的方式：IoC</span>
+    <span class="c1">// 思想：EmpImpl对象的创建信息从外部给入(如xml或者注解等)</span>
+    <span class="c1">// 这样EmpImpl对象创建权从Servlet层上移给用户层</span>
+
+    <span class="c1">// 具体方式：在用户和Servlet层之间创建IoC容器托管对象的创建</span>
+    <span class="c1">// 用户根据需要的功能要求IoC容器创建对应的对象就好了</span>
+
+    <span class="c1">// 总的来说，原来是对象的创建写死在程序当中的，</span>
+    <span class="c1">// 也就是程序完全控制对象的创建（主动依赖）</span>
+    <span class="c1">// 现在对象的创建权给用户控制了（反向依赖）</span>
+    <span class="c1">// 这样代码由用户注入，Servlet层代码就不需要大量修改</span>
+
+
+    <span class="c1">// 2. IoC方式</span>
+    <span class="kd">private</span> <span class="nc">EmpDao</span> <span class="n">empDao</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setEmpDao</span><span class="o">(</span><span class="nc">EmpDao</span> <span class="n">empDao</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">empDao</span> <span class="o">=</span> <span class="n">empDao</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getEmp</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">empDao</span><span class="o">.</span><span class="na">getEmp</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <ol>
+      <li>Register the beans in beans.xml</li>
+    </ol>
+  </li>
+</ul>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">"http://www.springframework.org/schema/beans"</span>
+    <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+    <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">"com.HB.dao.EmpDaoMySQL"</span> <span class="na">id=</span><span class="s">"empDaoMySQL"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">"com.HB.dao.EmpDaoOracle"</span> <span class="na">id=</span><span class="s">"empDaoOracle"</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">"com.HB.Servlet.EmpServletImpl"</span> <span class="na">id=</span><span class="s">"servlet"</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!--If you need to change EmpDaoImpl, there is no need to change codes.--&gt;</span>
+        <span class="c">&lt;!--&lt;property name="empDao" ref="empDaoMySQL"/&gt;--&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"empDao"</span> <span class="na">ref=</span><span class="s">"empDaoOracle"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/bean&gt;</span>
+<span class="nt">&lt;/beans&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <ol>
+      <li>The control is reverse while the result is the same.</li>
+    </ol>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">HelloSpring</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">ApplicationContext</span> <span class="n">context</span> <span class="o">=</span>
+            <span class="k">new</span> <span class="nf">ClassPathXmlApplicationContext</span><span class="o">(</span><span class="s">"beans.xml"</span><span class="o">);</span>
+    <span class="nc">EmpServlet</span> <span class="n">servlet</span> <span class="o">=</span> <span class="o">(</span><span class="nc">EmpServlet</span><span class="o">)</span> <span class="n">context</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="s">"servlet"</span><span class="o">);</span>
+    <span class="n">servlet</span><span class="o">.</span><span class="na">getEmp</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="note">Note</h2>
+
+<ul>
+  <li>Every bean must have a non-args-constructor (Default one).</li>
+  <li>Every bean must have setter.</li>
+</ul>
+
+<p>Thanks <a href="https://space.bilibili.com/95256449?spm_id_from=333.788.b_765f7570696e666f.2">QinJiang</a></p>
+:ET

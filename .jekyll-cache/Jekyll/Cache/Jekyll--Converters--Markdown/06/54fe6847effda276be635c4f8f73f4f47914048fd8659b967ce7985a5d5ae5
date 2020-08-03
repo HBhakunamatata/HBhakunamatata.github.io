@@ -1,0 +1,76 @@
+I"Ü<p>Dynamic SQL is a sql statement in world.<br />
+Dynamic SQL is a safe sql statement according to different conditions.</p>
+
+<h2 id="dynamic-sql">Dynamic SQL</h2>
+
+<h3 id="if">if</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"getEmpIf"</span> <span class="na">resultType=</span><span class="s">"Employee"</span> <span class="na">parameterType=</span><span class="s">"map"</span><span class="nt">&gt;</span>
+    select * from employees where 1=1
+    <span class="nt">&lt;if</span> <span class="na">test=</span><span class="s">"gender != null"</span><span class="nt">&gt;</span>
+        and gender = #{gender}
+    <span class="nt">&lt;/if&gt;</span>
+    <span class="nt">&lt;if</span> <span class="na">test=</span><span class="s">"limiter != null"</span><span class="nt">&gt;</span>
+        limit #{limiter}
+    <span class="nt">&lt;/if&gt;</span>
+<span class="nt">&lt;/select&gt;</span>
+</code></pre></div></div>
+
+<h3 id="where">where</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"getEmpWhere"</span> <span class="na">resultType=</span><span class="s">"Employee"</span> <span class="na">parameterType=</span><span class="s">"map"</span><span class="nt">&gt;</span>
+    select * from employees
+    <span class="nt">&lt;where&gt;</span>
+        <span class="nt">&lt;if</span> <span class="na">test=</span><span class="s">"gender != null"</span><span class="nt">&gt;</span>
+        and gender = #{gender}
+        <span class="nt">&lt;/if&gt;</span>
+        <span class="nt">&lt;if</span> <span class="na">test=</span><span class="s">"limiter != null"</span><span class="nt">&gt;</span>
+            limit #{limiter}
+        <span class="nt">&lt;/if&gt;</span>
+    <span class="nt">&lt;/where&gt;</span>
+<span class="nt">&lt;/select&gt;</span>
+</code></pre></div></div>
+<h3 id="choose">choose</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"getEmpChoose"</span> <span class="na">parameterType=</span><span class="s">"map"</span> <span class="na">resultType=</span><span class="s">"Employee"</span><span class="nt">&gt;</span>
+    select * from employees
+    <span class="nt">&lt;where&gt;</span>
+        <span class="nt">&lt;choose&gt;</span>
+            <span class="nt">&lt;when</span> <span class="na">test=</span><span class="s">"emp_no != null"</span><span class="nt">&gt;</span>
+                emp_no = #{empNo}
+            <span class="nt">&lt;/when&gt;</span>
+            <span class="nt">&lt;when</span> <span class="na">test=</span><span class="s">"birthDate != null"</span><span class="nt">&gt;</span>
+                and birth_date = #{birthDate}
+            <span class="nt">&lt;/when&gt;</span>
+            <span class="nt">&lt;otherwise&gt;</span>
+                and hire_date = #{hireDate}
+            <span class="nt">&lt;/otherwise&gt;</span>
+        <span class="nt">&lt;/choose&gt;</span>
+    <span class="nt">&lt;/where&gt;</span>
+<span class="nt">&lt;/select&gt;</span>
+</code></pre></div></div>
+
+<h3 id="an-example">An example</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@org</span><span class="o">.</span><span class="na">junit</span><span class="o">.</span><span class="na">Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">test01</span> <span class="o">()</span> <span class="o">{</span>
+
+    <span class="nc">SqlSession</span> <span class="n">sqlSession</span> <span class="o">=</span> <span class="nc">MyBatisUtils</span><span class="o">.</span><span class="na">getSqlSession</span><span class="o">();</span>
+    <span class="nc">EmployeeMapper</span> <span class="n">mapper</span> <span class="o">=</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">getMapper</span><span class="o">(</span><span class="nc">EmployeeMapper</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+    <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"gender"</span><span class="o">,</span> <span class="s">"F"</span><span class="o">);</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"limiter"</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
+
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Employee</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="na">getEmpIf</span><span class="o">(</span><span class="n">map</span><span class="o">);</span>
+
+    <span class="k">for</span> <span class="o">(</span><span class="nc">Employee</span> <span class="n">emp</span> <span class="o">:</span> <span class="n">list</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">emp</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="n">sqlSession</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Thanks <a href="https://space.bilibili.com/95256449?spm_id_from=333.788.b_765f7570696e666f.2">QinJiang</a></p>
+:ET
