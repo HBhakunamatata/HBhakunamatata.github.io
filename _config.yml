@@ -5,7 +5,7 @@ description: > # this means to ignore newlines until "show_exerpts:"
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
 show_excerpts: true # set to true to show excerpts on the homepage
-baseurl: 
+baseurl:
 # markdown: GFM
 markdown: kramdown
 
@@ -15,6 +15,7 @@ sass:
   sass_dir: _sass
 
 permalink: /posts/:title/
+
 texture:
   title: Bo Han's Blog
   tagline: Dream to Be a Developer
@@ -23,12 +24,12 @@ texture:
   showNav: true
   showPicker: false
 
-  # generate social links
-  social_links:
-    github:  HBhakunamatata
-    linkedIn: hanbo
-    mail: hanbo9501@gmail.com
-    rss: rss
+# generate social links
+social_links:
+  github:  HBhakunamatata
+  linkedIn: hanbo
+  mail: hanbo9501@gmail.com
+  rss: rss
  
 
 # If you want to link only specific pages in your header, uncomment
