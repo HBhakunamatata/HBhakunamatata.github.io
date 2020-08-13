@@ -23,7 +23,7 @@ texture:
   showNav: true
   showPicker: false
 
-  # generate social links in footer
+  # generate social links
   social_links:
     github:  HBhakunamatata
     linkedIn: hanbo

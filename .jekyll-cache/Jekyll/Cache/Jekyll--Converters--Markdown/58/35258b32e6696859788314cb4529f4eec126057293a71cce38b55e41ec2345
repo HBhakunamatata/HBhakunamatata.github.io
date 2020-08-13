@@ -1,0 +1,113 @@
+I"o<p>This post is about @Controller and @RequestMapper.<br />
+When you get a Controller, you must give it a RequestMapper.</p>
+
+<h2 id="three-methods-of-implementing-controller">Three methods of implementing Controller</h2>
+
+<h3 id="1-implementing-interface-named-controller">1. Implementing interface named <em>Controller</em></h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Controller01</span> <span class="kd">implements</span> <span class="nc">Controller</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">ModelAndView</span> <span class="nf">handleRequest</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">httpServletRequest</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">httpServletResponse</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+
+        <span class="nc">ModelAndView</span> <span class="n">mv</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ModelAndView</span><span class="o">();</span>
+        <span class="n">mv</span><span class="o">.</span><span class="na">addObject</span><span class="o">(</span><span class="s">"msg"</span><span class="o">,</span> <span class="s">"Method01 : implement Controller interface"</span><span class="o">);</span>
+        <span class="n">mv</span><span class="o">.</span><span class="na">setViewName</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">mv</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>In this way, you must register this Controller and its RequestMapper in sringmvc-servlet.xml
+```xml</li>
+</ul>
+<bean class="com.HB.controller.Controller01" id="/c1" />
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+### 2. Using _@Controller_ and _@RequestMapper_ (Recommended)
+
+```java
+@Controller
+@RequestMapping("/c2")
+public class Controller02 {
+    @RequestMapping("/f2")
+    public String func(Model model) {
+        model.addAttribute("msg", "Spring MVC using @Controller");
+        return "hello";
+    }
+}
+</code></pre></div></div>
+
+<h2 id="restful-style">Restful Style</h2>
+
+<ul>
+  <li>Restful就是一个_资源定位及资源操作的风格_。不是标准也不是协议，只是一种风格。</li>
+  <li>好处 : 更简洁，更安全，更易于实现缓存等机制。</li>
+</ul>
+
+<h3 id="1举例">1.举例</h3>
+
+<ul>
+  <li>传统方式操作资源
+    <ul>
+      <li>http://127.0.0.1/item/queryItem.action?id=1  查询,GET</li>
+      <li>http://127.0.0.1/item/saveItem.action        新增,POST</li>
+      <li>http://127.0.0.1/item/updateItem.action      更新,POST</li>
+      <li>http://127.0.0.1/item/deleteItem.action?id=1 删除,GET或POST</li>
+    </ul>
+  </li>
+  <li>Restful风格操作资源
+    <ul>
+      <li>http://127.0.0.1/item/1   查询,GET</li>
+      <li>http://127.0.0.1/item     新增,POST</li>
+      <li>http://127.0.0.1/item     更新,PUT</li>
+      <li>http://127.0.0.1/item/1   删除,DELETE</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="2test">2.Test</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Controller</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Controller03Restful</span> <span class="o">{</span>
+
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">path</span> <span class="o">=</span> <span class="s">"/add/{a}/{b}"</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="nc">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">testRestful01</span> <span class="o">(</span><span class="nc">Model</span> <span class="n">model</span><span class="o">,</span> <span class="nd">@PathVariable</span> <span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="nd">@PathVariable</span> <span class="kt">int</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"msg"</span><span class="o">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">"hello"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">path</span> <span class="o">=</span> <span class="s">"/add/{a}/{b}"</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="nc">RequestMethod</span><span class="o">.</span><span class="na">DELETE</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">testRestful02</span> <span class="o">(</span><span class="nc">Model</span> <span class="n">model</span><span class="o">,</span> <span class="nd">@PathVariable</span> <span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="nd">@PathVariable</span> <span class="kt">int</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"msg"</span><span class="o">,</span> <span class="s">""</span> <span class="o">+</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">"hello"</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Form: localhost:8080/add?a=1&amp;b=2</li>
+  <li>To : localhost:8080/add/1/2</li>
+</ul>
+
+<h3 id="3restful-note">3.Restful Note</h3>
+
+<ul>
+  <li>
+    <ol>
+      <li>先在@RequestMapper中配置好path的格式，需要的参数用{name}</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>在@RequestMapper中还需要指定http使用的方法名method = RequestMethod.XXX</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>最后在业务函数中用@PathVariable 把path给的参数 绑定到形参上使用</li>
+    </ol>
+  </li>
+</ul>
+:ET

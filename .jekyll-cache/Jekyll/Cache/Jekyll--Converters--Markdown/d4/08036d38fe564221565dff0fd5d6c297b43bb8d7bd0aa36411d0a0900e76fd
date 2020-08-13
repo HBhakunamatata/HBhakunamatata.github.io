@@ -1,0 +1,116 @@
+I"�!<p>SpringMVC配置三大件：处理器映射器、处理器适配器、视图解析器</p>
+
+<h2 id="first-demo">First Demo</h2>
+
+<ul>
+  <li>This demo illustrates the mechanism of SpringMVC in previous post.</li>
+</ul>
+
+<h3 id="11-add-maven-dependencies">1.1 add maven dependencies</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.springframework<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>spring-webmvc<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>5.2.0.RELEASE<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>javax.servlet<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>servlet-api<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.5<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>javax.servlet.jsp<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>jsp-api<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>javax.servlet<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>jstl<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.2<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div>
+
+<h3 id="12-register-dispatcherservlet-in-webxml">1.2 register DispatcherServlet in web.xml</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!--1.注册DispatcherServlet--&gt;</span>
+<span class="nt">&lt;servlet&gt;</span>
+   <span class="nt">&lt;servlet-name&gt;</span>springmvc<span class="nt">&lt;/servlet-name&gt;</span>
+   <span class="nt">&lt;servlet-class&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="nt">&lt;/servlet-class&gt;</span>
+   <span class="c">&lt;!--关联一个springmvc的配置文件:【servlet-name】-servlet.xml--&gt;</span>
+   <span class="nt">&lt;init-param&gt;</span>
+       <span class="nt">&lt;param-name&gt;</span>contextConfigLocation<span class="nt">&lt;/param-name&gt;</span>
+       <span class="nt">&lt;param-value&gt;</span>classpath:springmvc-servlet.xml<span class="nt">&lt;/param-value&gt;</span>
+   <span class="nt">&lt;/init-param&gt;</span>
+   <span class="c">&lt;!--启动级别-1--&gt;</span>
+   <span class="nt">&lt;load-on-startup&gt;</span>1<span class="nt">&lt;/load-on-startup&gt;</span>
+<span class="nt">&lt;/servlet&gt;</span>
+
+<span class="c">&lt;!--/ 匹配所有的请求；（不包括.jsp）--&gt;</span>
+<span class="c">&lt;!--/* 匹配所有的请求；（包括.jsp）--&gt;</span>
+<span class="nt">&lt;servlet-mapping&gt;</span>
+   <span class="nt">&lt;servlet-name&gt;</span>springmvc<span class="nt">&lt;/servlet-name&gt;</span>
+   <span class="nt">&lt;url-pattern&gt;</span>/<span class="nt">&lt;/url-pattern&gt;</span>
+<span class="nt">&lt;/servlet-mapping&gt;</span>
+</code></pre></div></div>
+
+<h3 id="13-write-dispatcherservlet-configs-in-spring-servletxml">1.3 Write DispatcherServlet configs in spring-servlet.xml</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!--  1.添加 处理映射器  --&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">"org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"</span><span class="nt">/&gt;</span>
+
+<span class="c">&lt;!--  2.添加 处理器适配器  --&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">"org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"</span><span class="nt">/&gt;</span>
+
+<span class="c">&lt;!--  3.视图解析器:DispatcherServlet给他的ModelAndView--&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span> <span class="na">id=</span><span class="s">"ViewResolver"</span><span class="nt">&gt;</span>
+   <span class="c">&lt;!--前缀--&gt;</span>
+   <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"prefix"</span> <span class="na">value=</span><span class="s">"/WEB-INF/jsp/"</span><span class="nt">/&gt;</span>
+   <span class="c">&lt;!--后缀--&gt;</span>
+   <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"suffix"</span> <span class="na">value=</span><span class="s">".jsp"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+
+<span class="c">&lt;!--Register a Handler and the request path--&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"/hello"</span> <span class="na">class=</span><span class="s">"com.HB.controller.HelloController"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<h3 id="14-write-the-controller">1.4 Write the Controller</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloController</span> <span class="kd">implements</span> <span class="nc">Controller</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="nc">ModelAndView</span> <span class="nf">handleRequest</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+       <span class="c1">//ModelAndView 模型和视图</span>
+       <span class="nc">ModelAndView</span> <span class="n">mv</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ModelAndView</span><span class="o">();</span>
+
+       <span class="c1">//封装对象，放在ModelAndView中,可以在hello.jsp中取出${msg}</span>
+       <span class="n">mv</span><span class="o">.</span><span class="na">addObject</span><span class="o">(</span><span class="s">"msg"</span><span class="o">,</span><span class="s">"HelloSpringMVC!"</span><span class="o">);</span>
+       <span class="c1">//封装要跳转的视图，放在ModelAndView中</span>
+       <span class="n">mv</span><span class="o">.</span><span class="na">setViewName</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span> <span class="c1">//: /WEB-INF/jsp/hello.jsp</span>
+       <span class="k">return</span> <span class="n">mv</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="o">&lt;!--</span><span class="nc">Register</span> <span class="n">a</span> <span class="nc">Handler</span> <span class="n">and</span> <span class="n">the</span> <span class="n">request</span> <span class="n">path</span><span class="o">--&gt;</span>
+<span class="o">&lt;</span><span class="n">bean</span> <span class="n">id</span><span class="o">=</span><span class="s">"/hello"</span> <span class="kd">class</span><span class="err">="</span><span class="nc">com</span><span class="o">.</span><span class="na">HB</span><span class="o">.</span><span class="na">controller</span><span class="o">.</span><span class="na">HelloController</span><span class="err">"</span><span class="o">/&gt;</span>
+</code></pre></div></div>
+
+<h2 id="note">Note</h2>
+
+<ul>
+  <li>1.如果遇到404错误“找不到jar资源”，那么可能是网络生成的包中没有引入maven中的依赖项<br />
+  在artiface中添加一个lib文件夹并将maven依赖导入</li>
+  <li>2.web.xml的版本必须大于4.0(通常使用add framework 导入)</li>
+  <li>3.为了安全性，内部资源一般放在/web/WEB-INF下，而公共资源直接放在web下</li>
+  <li>4.notice the defference of / and /*
+```xml
+<!--/ 匹配所有的请求；（不包括.jsp）-->
+<!--/* 匹配所有的请求；（包括.jsp）--></li>
+</ul>
+<servlet-mapping>
+   <servlet-name>springmvc</servlet-name>
+   <url-pattern>/</url-pattern>
+```
+</servlet-mapping>
+:ET
