@@ -3,7 +3,7 @@
 
 @import "theme";
 
- {%- if site.texture.showPicker -%}
+{%- if site.texture.showPicker -%}
 #texture-picker {
     position: fixed;
     {%- if site.texture.showNav -%}
@@ -13,7 +13,7 @@
         top: 20px;
         right: 20px;
     {%- endif -%}
-    background-color: #fff;
+    background-color: #000000;
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 8px 12px;
