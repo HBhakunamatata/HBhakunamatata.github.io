@@ -13,6 +13,7 @@ markdown: kramdown
 # refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
 sass:
   sass_dir: _sass
+  style: compressed
 
 permalink: /posts/:title/
 
@@ -42,4 +43,8 @@ social_links:
 
 plugins:
   - jekyll-seo-tag
-#  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jekyll-include-cache
