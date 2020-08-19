@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "SpringMVC-05 DataInteraction and Diapatch&Redirect"
+title:  "SpringMVC-05 DataInteraction Diapatch&Redirect"
 description: 
 date:   2020-08-03
 categories: SpringMVC
