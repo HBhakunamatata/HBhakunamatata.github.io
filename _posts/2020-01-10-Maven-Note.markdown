@@ -5,9 +5,8 @@ date:   2020-01-10
 description:
 categories: Java Maven
 ---
-Describtion test
+How to use Maven
 
-# Maven Note
 
 ## 1.What is mvn
 
@@ -54,6 +53,4 @@ Describtion test
 
 ## 7.Lifecycle(3)
 
-- Compiler ---> Test ---> Package ---> Install ---> Deploy
-
-## 8.Conception Model
+- Compile ---> Test ---> Package ---> Install ---> Deploy
