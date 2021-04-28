@@ -5,9 +5,9 @@ description:
 date: 2020-07-25
 categories: Maven MyBatis
 ---
-The solotion the multiple-single issue
+The solotion to multiple-single issue
 
-# Multiple --- Single
+## Multiple --- Single
 
 - Issue : We need query a object in a table that contains another object in another table.
 - Example : query an employee's salary infos with other infos about the employee.
@@ -52,7 +52,7 @@ public interface SalaryMapper {
 
 ```xml
 <mapper namespace="com.HB.dao.SalaryMapper">
-    <select id="getEmpWithSalary01" resultMap="">
+    <select id="getEmpWithSalary01" resultMap="EmpWithSal">
         select * form salaries
     </select>
 
@@ -60,7 +60,7 @@ public interface SalaryMapper {
         <result column="from_date" property="fromDate"/>
         <result column="to_date" property="toDate"/>
         <result column="salary" property="salary"/>
-        <associstion property="emp" javaType="Employee" select="getEmp" column="emp_no"/>
+        <association property="emp" javaType="Employee" select="getEmp" column="emp_no"/>
     </resultMap>
 
     <select id="getEmp" resultType="Employee">
@@ -105,6 +105,10 @@ public interface SalaryMapper {
     </select>
 
     <resultMap id="EmpWithSal02" resultType="Salary">
+        <result column="emp_no", property="emp">
+        <result column="salary", property="salary">
+        <result column="from_date" property="fromDate">
+        <result column="to_date" property="toDate">
         <association property="emp" javaType="Employee">
             <!--    在这里每一项都要写，漏了就是null  -->
             <result property="emp_no" column="emp_no"/>

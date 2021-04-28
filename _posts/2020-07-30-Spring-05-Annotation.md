@@ -38,7 +38,7 @@ Autowire is to load the _field_ in beans automatically instead of bean itself.
 
 - @Autowired 默认使用byType方式装配
 - @Autowired 不需要Setter
-- @Autowired(required=false) 说明：false，对象可以为null；true，对象必须存对象，不能为null
+- @Autowired(required=false) 说明：false，对象可以为null； true，对象必须存对象，不能为null
 
 ```java
 public class People {
@@ -67,13 +67,13 @@ public class People {
 - @Qualified不能单独使用
 
 ```xml
-    <bean class="com.HB.pojo.Dog" id="dog"/>
-    <bean class="com.HB.pojo.Cat" id="cat"/>
+<bean class="com.HB.pojo.Dog" id="dog"/>
+<bean class="com.HB.pojo.Cat" id="cat"/>
 
-    <bean class="com.HB.pojo.Dog" id="dog111"/>
-    <bean class="com.HB.pojo.Cat" id="cat111"/>
+<bean class="com.HB.pojo.Dog" id="dog111"/>
+<bean class="com.HB.pojo.Cat" id="cat111"/>
 
-    <bean class="com.HB.pojo.People" id="people"/>
+<bean class="com.HB.pojo.People" id="people"/>
 ```
 
 ```java

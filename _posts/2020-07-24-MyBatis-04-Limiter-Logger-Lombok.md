@@ -15,7 +15,7 @@ There are several methods to implement the limiter in MyBatis.
 
 - (1) Registe method
 
-```
+```sql
 List<Employee> getEmpByLimit01(Map<String, Integer> map);
 
 <select id="getEmpByLimit01" parameterType="map" resultMap="empResultMap">
@@ -72,25 +72,25 @@ public void getEmpByLimit() {
 
 ```java
 @org.junit.Test
-    public void testPageHelper () {
-        SqlSession sqlSession = MyBatisUtils.getSqlSession();
-        EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
-        PageHelper.startPage(2, 5);
-        List<Employee> employees = mapper.getEmployees();
-        for (Employee emp : employees) {
-            logger.info(emp);
-        }
-
-        logger.info("==============================================");
-
-        PageHelper.offsetPage(2, 5);
-        employees = mapper.getEmployees();
-        for (Employee emp : employees) {
-            logger.info(emp);
-        }
-
-        sqlSession.close();
+public void testPageHelper () {
+    SqlSession sqlSession = MyBatisUtils.getSqlSession();
+    EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
+    PageHelper.startPage(2, 5);
+    List<Employee> employees = mapper.getEmployees();
+    for (Employee emp : employees) {
+        logger.info(emp);
     }
+
+    logger.info("==============================================");
+
+    PageHelper.offsetPage(2, 5);
+    employees = mapper.getEmployees();
+    for (Employee emp : employees) {
+        logger.info(emp);
+    }
+
+    sqlSession.close();
+}
 ```
 
 

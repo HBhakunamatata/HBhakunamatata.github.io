@@ -112,7 +112,8 @@ or
 <settings>
     <setting name="cacheEnabled" value="true"/>
     <setting name="lazyLoadingEnabled" value="true"/>
-    <setting name="logImpl" value="LOG4J"/>
+    <setting name="logImpl" value="LOG4J | LOG4J2 | STDOUT_LOGGING"/>
+    <setting name="mapUnderscoreToCamelCase" value="true"/>
 </settings>
 ```
 

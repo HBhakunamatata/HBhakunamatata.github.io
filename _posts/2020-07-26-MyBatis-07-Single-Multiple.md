@@ -7,7 +7,7 @@ categories: Maven MyBatis
 ---
 The solotion the single-multiple issue
 
-# Single --- Multiple
+## Single --- Multiple
 
 - Issue : We need query a object in a table that contains a clollection of another object in another table.
 - Example : query a department infos with all dept-managers and their infos.

@@ -19,7 +19,8 @@ implement CRUD in MyBatis
 ### (1) Preparing methods in interface
 
 You need to statement the methods in dao.EmployeesMappper.java
-````java
+
+```java
 public interface EmployeeMapper {
 
     List<Employee> getEmployees();
@@ -40,32 +41,33 @@ public interface EmployeeMapper {
     int updateWithMap (Map<String, Object> map);
 
 }
-````
+```
 
 ### (2) select
 
-`````xml
+```xml
 <select id="getEmployeesById" parameterType="int" resultType="com.HB.pojo.Employee">
     select * from employees where emp_no = #{emp_no}
 </select>
-`````
+```
 
 ### (3) insert
 
-````xml
+```xml
 <insert id="insertEmployee" parameterType="com.HB.pojo.Employee">
     insert into employees
     (emp_no, birth_date, first_name, last_name, gender, hire_date)
     values
     (#{emp_no}, #{birthdate}, #{firstname}, #{lastname}, #{gender}, #{hiredate})
 </insert>
-````
+```
 
 ### (4) update
 
 ```xml
 <update id="updateEmployee" parameterType="com.HB.pojo.Employee">
-    update employees set
+    update employees 
+    set
         birth_date = #{birthdate},
         first_name = #{firstname},
         last_name = #{lastname},
@@ -90,7 +92,8 @@ we can form a _customized_ Map to operate the specific columns.
 
 ```xml
   <update id="updateWithMap" parameterType="map">
-    update employees set
+    update employees 
+    set
         first_name = #{randomnameA},
         last_name = #{randomnameB}
     where emp_no = #{randomNum}
@@ -108,7 +111,7 @@ we can form a _customized_ Map to operate the specific columns.
         map.put("randomNum", 1);
 
         EmployeeMapper mapper = session.getMapper(EmployeeMapper.class);
-        mapper.updateWithMap(map);-
+        mapper.updateWithMap(map);
 
         session.commit();
         session.close();
@@ -119,7 +122,7 @@ we can form a _customized_ Map to operate the specific columns.
 
 - (1) [operators] sqlstatements [settings] #{fields}
     - names in sqlstate <------> sqldatabase columns
-    - The #{field name} <------> methods params or fields in jopo  
+    - The #{field name} <------> methods params or fields in pojo  
         (just the same as parameterType/resultType)  
         (This can be obvious when use a map.)
 - (2) After the sql operators [insert|update|delete], you must
