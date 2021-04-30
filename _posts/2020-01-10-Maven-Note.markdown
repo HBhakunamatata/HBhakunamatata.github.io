@@ -17,7 +17,7 @@ How to use Maven
   - (3)JUnit
   - (4)Package
 
-## 2.Two Freatures
+## 2.Two Features
 
 - (1) Dependency Management System
   - There is only the reference of the Jar instead of whole Jar
@@ -26,7 +26,7 @@ How to use Maven
 ## 3.Initialization
 
 - MAVEN_HOME
-- %MAVEN_HOME%
+- %MAVEN_HOME%/bin
 - mvn -v
 
 ## 4.Repository
