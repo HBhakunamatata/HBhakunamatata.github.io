@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  "MySQL-04 Index and Transaction"
+title:  "MySQL-06 Index and Transaction"
 description: 
-date:   2020-04-18
+date:   2020-04-28
 categories: MySQL
 ---
 Index and Transaction in MySQL
 
-### 4.1 Index
+## 4.1 Index
 
 - 1. 主键索引 (Primary Key) : 确保数据记录的唯一性
 
@@ -45,3 +45,27 @@ ALTER TABLE `result` ADD INDEX `ind`(`studentNo`,`subjectNo`);
 ```
 
 - 4. 全文索引 (FullText)
+
+## 4.2 Transaction
+
+- 可以回退：insert / update / delete
+- 无法回退：select / create / drop
+
+```sql
+start transaction;
+	sql1;
+	sql2;
+rollback;
+
+start transaction;
+	sql1;
+	sql2;
+commit;
+
+savepoint delete1;
+	sql1;
+	sql2;
+rollback to delete1;
+```
+
+- 使用commit / rollback 事务自动提交
