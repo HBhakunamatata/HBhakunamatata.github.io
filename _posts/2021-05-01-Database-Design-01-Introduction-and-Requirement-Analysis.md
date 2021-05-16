@@ -1,9 +1,9 @@
 ---
-Acrolayout: post
+layout: post
 title:  "Database-Design-01 Introduction and Requirement Analysis"
 description: 
-date:   2020-05-01
-categories: MySQL
+date:   2021-05-01
+categories: Database Design
 ---
 
 ## 1.1 Introduction
@@ -60,7 +60,7 @@ categories: MySQL
 
 1.3.6 entries relations
 
-![image-relation](E:\git_pro\HBhakunamatata.github.io\_drafts\image-relations.png)
+![image-relation](E:\git_pro\HBhakunamatata.github.io\_posts\images\database_design\image-relations.png)
 
 ## Note
 

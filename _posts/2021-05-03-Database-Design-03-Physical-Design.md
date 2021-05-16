@@ -1,11 +1,9 @@
 ---
-
 layout: post
 title:  "Database-Design-03 Physical Design"
 description: 
-date:   2020-05-03
-categories: MySQL
-
+date:   2021-05-03
+categories: Database-Design
 ---
 
 DBMS --> database,table,column naming --> fields choose --> 
@@ -37,7 +35,7 @@ De-normalization
 - 数字型 --> 日期 / 二进制 --> 字符型
 - 相同级别的按存贮空间从大到小
 
-![image-20210504131120665](E:\git_pro\HBhakunamatata.github.io\_drafts\image-field-size.png)
+![image-20210504131120665](E:\git_pro\HBhakunamatata.github.io\_posts\images\database_design\image-field-size.png)
 
 ### 3.3.2 Reason
 

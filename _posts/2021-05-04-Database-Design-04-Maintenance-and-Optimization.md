@@ -1,14 +1,12 @@
 ---
-
 layout: post
 title:  "Database-Design-04 Maintenance and optimization"
 description: 
-date:   2020-05-04
-categories: MySQL
-
+date:   2021-05-04
+categories: Database-Design
 ---
 
-1. maintain data dictionary 2. maintain index 3. maintain table structure 4. Split the table vertically and horizontally when appropriate
+1.maintain data dictionary 2.maintain index 3.maintain table structure 4.Split the table vertically and horizontally when appropriate
 
 ## 4.1 Dictionary
 
@@ -55,7 +53,7 @@ WHERE a.table_name=’customer’
 
 - 使用主键hash ？？？
 
-![image-20210504144957579](E:\git_pro\HBhakunamatata.github.io\_drafts\image-split-horizontally.png)
+![image-20210504144957579](E:\git_pro\HBhakunamatata.github.io\_posts\images\database_design\image-split-horizontally.png)
 
 ## Note
 
