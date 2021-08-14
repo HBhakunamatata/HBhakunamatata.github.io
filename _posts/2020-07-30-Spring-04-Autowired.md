@@ -54,7 +54,7 @@ public class People {
         例如setCat，获得将set去掉并且首字母小写的字符串，即cat。
     - 然后在spring容器中继续寻找是否有此字符串名称id的对象。
     - 如果有，就取出注入；如果没有，就报空指针异常。
-    - 练习：将DogBean的id改为dog1，就会有NullPoniterException
+    - 练习：将DogBean的id改为dog1，就会有NullPointerException
 
 - (2) autowire byType
     

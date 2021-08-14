@@ -10,7 +10,7 @@ Autowire is to load the _field_ in beans automatically instead of bean itself.
 ## Before using the annotation
 
 ```xml
-// application-config.xml
+// beans.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:context="http://www.springframework.org/schema/context" // added
@@ -22,7 +22,7 @@ Autowire is to load the _field_ in beans automatically instead of bean itself.
         https://www.springframework.org/schema/context/spring-context.xsd">  added
 
     <context:annotation-config />                                 // added
-<beans/>
+</beans>
 
 // maven dependency
 <!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->

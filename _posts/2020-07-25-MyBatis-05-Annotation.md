@@ -59,31 +59,36 @@ public class Test {
     @org.junit.Test
     public void test () {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
-        EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
+        try {
+            EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
 
-        Employee emp = new Employee(
-            2,
-            new Date(System.currentTimeMillis()),
-            "HH",
-            "DD",
-            "F",
-            new Date(System.currentTimeMillis())
-        );
+            Employee emp = new Employee(
+                2,
+                new Date(System.currentTimeMillis()),
+                "HH",
+                "DD",
+                "F",
+                new Date(System.currentTimeMillis())
+            );
 
-        int i = mapper.insertEmp(emp);
-        System.out.println(i + "item inserted");
+            int i = mapper.insertEmp(emp);
+            System.out.println(i + "item inserted");
 
-        Map<String, Object> map = new HashMap<>();
-        map.put("emp_no", 2);
-        map.put("first_name", "SS");
-        map.put("last_name", "LL");
-        int i1 = mapper.updateEmp(map);
+            Map<String, Object> map = new HashMap<>();
+            map.put("emp_no", 2);
+            map.put("first_name", "SS");
+            map.put("last_name", "LL");
+            int i1 = mapper.updateEmp(map);
 
-        System.out.println(i1 + "item changed");
+            System.out.println(i1 + "item changed");
 
-        int i2 = mapper.deleteEmp(2);
-        System.out.println(i2 + "item deleted");
+            int i2 = mapper.deleteEmp(2);
+            System.out.println(i2 + "item deleted");
 
+            sqlSession.commit();
+        } finally {
+            sqlSession.close();
+        }
     }
 }
 ```
@@ -92,7 +97,7 @@ public class Test {
     
     - 基本类型的参数或者String类型，需要加上@Param, 引用类型不需要加
     - 我们在SQL中引用的就是我们这里的@Param()中设定的属性名
-    - 使用annotation，不需要提交事务
+    - 使用annotation，需要提交事务: sqlSession.commit()
 
     - 但是如果要动态更新属性（即动态生成SQL语句）这种方式就有局限性了
     - 而且使用sql拼接时，多余或者缺少[' '|AND|OR]会增加很多麻烦

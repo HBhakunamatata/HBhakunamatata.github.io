@@ -15,7 +15,7 @@ There are several methods to implement the limiter in MyBatis.
 
 - (1) Registe method
 
-```sql
+```java
 List<Employee> getEmpByLimit01(Map<String, Integer> map);
 
 <select id="getEmpByLimit01" parameterType="map" resultMap="empResultMap">

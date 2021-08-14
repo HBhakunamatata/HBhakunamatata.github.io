@@ -7,12 +7,10 @@ categories: Maven MyBatis
 ---
 Use cache mechanism in MyBatis
 
-# Cache
-
 ### 1. Why use cache?
 
 - Because the connection towards MySQL costs a lot of resources.
-- Saving the data in the SRAM can reduce the quantity of connection  
+- Saving the data in the SRAM can reduce the quantity of connection 
 and improve the behavior.
 
 ### 2. What kind of data need storing in cache?
@@ -23,7 +21,7 @@ and improve the behavior.
 
 - get : First query the second level cache, then local cache in sqlsession,  
         neither found, execute the sql statement in db.
-- put : After querying, put the result in loacl cache.  
+- put : After querying, put the result in local cache.  
         When the sqlsession closes, put the local cache into the second level cache.
 
 ### 4. When Local Cache fails

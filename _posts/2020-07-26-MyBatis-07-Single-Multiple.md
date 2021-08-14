@@ -5,11 +5,11 @@ description:
 date: 2020-07-26
 categories: Maven MyBatis
 ---
-The solotion the single-multiple issue
+The solution the single-multiple issue
 
 ## Single --- Multiple
 
-- Issue : We need query a object in a table that contains a clollection of another object in another table.
+- Issue : We need query a object in a table that contains a collection of another object in another table.
 - Example : query a department infos with all dept-managers and their infos.
 
 ### pojo

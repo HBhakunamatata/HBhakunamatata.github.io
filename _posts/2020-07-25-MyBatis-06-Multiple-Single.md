@@ -110,7 +110,7 @@ public interface SalaryMapper {
         <result column="from_date" property="fromDate">
         <result column="to_date" property="toDate">
         <association property="emp" javaType="Employee">
-            <!--    在这里每一项都要写，漏了就是null  -->
+            <!--  在这里每一项都要写，漏了就是null  -->
             <result property="emp_no" column="emp_no"/>
             <result column="birth_date" property="birth_date"/>
             <result column="gender" property="gender"/>
