@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Spring-04 Autowire"
+title:  "Spring-04 Dependency Injection (Autowiring)"
 description: 
 date:   2020-07-27
 categories: Spring Autowire
