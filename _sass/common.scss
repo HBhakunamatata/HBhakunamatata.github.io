@@ -1,0 +1,190 @@
+
+@import 'ext/normalize';
+@import 'begin';
+@import 'ext/fonts';
+@import 'post-theme';
+
+
+// 变量定义
+$linkBorderColor: #2b2b2b;
+$gray: #999;
+$lightGray: #eee;
+
+
+// 0. 预先定义的配置
+*,*:before,*:after {
+	box-sizing: border-box;
+}
+
+
+// 1. 页面通用修改部分
+body {
+	font-family: 'Nunito Sans', sans-serif;
+	@include fluidType(16px, 19px);
+	line-height: 1.55em;
+	margin: 0;
+	// 两个非标准特性：CSS 属性控制字体渲染时应用的抗锯齿效果。
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;  
+}
+
+a {
+	color: $lightGray;
+	text-decoration: none;
+	transition: border-bottom 0.4s;
+	// &:hover {
+	// 	border-bottom: 0.5px solid $lightGray;
+	// }
+}
+
+
+
+// 2. header navbar 部分
+.flex-center {
+    display: flex;
+    // flex-wrap: row wrap;
+    align-items: center;
+}
+
+
+// <a> 变成 <button>  
+.arthor-buttonlize {
+    // display: inline-block;
+    text-decoration: none;
+    outline-color: transparent;
+    text-align: center;
+    // line-height: 3;
+}
+
+
+nav {
+    justify-content: space-between;
+
+    h2 {
+        margin: 0;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        li {
+            list-style-type: none;
+            a {
+                color: #2b2b2b;
+                text-decoration: none;
+                border-top: 3px solid transparent;
+                margin: 0px 5px;
+                padding: 5px 3px;
+                &:hover {
+                    border-top: 3px solid $linkBorderColor;
+                }
+            }
+            
+            
+        }
+    }
+}
+
+// 3. header intro 部分
+
+
+.social {
+    display: flex;
+    flex-wrap: row wrap;
+    flex: 1;
+    align-items:center;
+    justify-content: center;
+
+    overflow: hidden;
+    list-style-type: none;
+    padding: 0;
+    margin-top: 0;
+    li {
+        i {
+            color: #f4f3f3;
+            &:first-child::before {
+                margin-left: 0;
+            }
+            @include fluidType(26px, 34px);
+            transition: color .3s;
+            &:hover {
+                color: $gray;
+            }
+        }
+    }
+}
+
+
+// 4. posts 部分
+main {
+    // background-color: $lightGray;
+}
+
+.posts {
+	list-style-type: none;
+	padding: 0;
+	> li {
+		margin: 20px 0px 20px 0px;
+		padding: 20px 0px 20px 0px;
+		&:not(:last-child) {
+			border-bottom: 1px solid $lightGray;
+		}
+	}
+}
+
+.posts {
+	margin-top: 40px;
+}
+
+.post-meta {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+    
+	a:hover {
+		border-bottom: none;
+	}
+}
+
+.post-link {
+    flex: 4 200px;
+    text-decoration: none;
+}
+
+.post-title {
+	color: #222;
+	transition: color .3s ease;
+	margin: .1em 0;
+	&:hover {
+		color: $gray;
+		border-bottom: 0;
+	}
+}
+
+.post-date {
+	color: $gray;
+	.icon-calendar {
+		margin-right: 6px;
+	}
+}
+
+// 5. footer 部分
+
+.footer {
+	// background-size: cover;
+	background-image: url('/assets/images/black.jpg');
+	padding: 6px 0;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.footer-text {
+	align-self: center;
+    color: #999;
+    font-size: 0.9em;
+}
+
+
+// 6. page-post 部分
+

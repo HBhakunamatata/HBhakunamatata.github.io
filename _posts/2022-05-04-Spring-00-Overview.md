@@ -10,7 +10,7 @@ categories: Spring
 
 - 1. Composition of Spring
 
-![composition](/images/spring/composition.png)
+![composition]({{ site.baseurl }}/assets/post-images/spring/composition.png)
 
 - 2. Principle : Simplify Java Development
 

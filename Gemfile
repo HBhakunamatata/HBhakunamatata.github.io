@@ -9,3 +9,8 @@ gem "jekyll-paginate"
 gem "jekyll-sitemap"
 gem "jekyll-gist"
 gem "jekyll-include-cache"
+
+gem "csv"
+gem "base64"
+gem "bigdecimal"
+gem "faraday_middleware-request-retry"

@@ -1,0 +1,40 @@
+@import 'syntax';
+
+$gray: #999;
+$lightGray: #eee;
+
+.post-container {
+	margin-top: 40px;
+}
+
+.post-description {
+	font-weight: normal;
+	color: #ddd;
+
+	margin-top:.5em;
+	margin-bottom: 1.3em;
+}
+
+.post-date {
+	color: $gray;
+	.icon-calendar {
+		margin-right: 6px;
+	}
+}
+
+.post-tags {
+	list-style-type: none;
+	padding: 0;
+	li {
+		// float: left;
+		padding: 10px 20px;
+		background-color: $lightGray;
+		color: #000;
+		margin: 5px;
+		border-radius: 2px;
+		@include fluidType(15px, 17px);
+		&:first-child {
+			margin-left: 0;
+		}
+	}
+}

@@ -1,13 +1,21 @@
-{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-<div class="container">
-	<h1>{{ page.title }}</h1>
-	<h4 class="post-description">{{ page.description }}</h4>
-	<div class="post-date" style="margin-top:20px">
-		Published on {{ page.date | date: date_format }}
+<header>
+	<!-- 加入导航栏 -->
+	{%- include nav.html -%}
+
+	<!-- intro部分 -->
+	{%- assign date_format = site.minima.date_format | default: "%Y-%m-%d" -%}
+	<div class="texture-black">
+		<h1>{{ page.title }}</h1>
+		<h2 class="post-description">{{ page.description }}</h2>
+		<h4 class="post-date" style="margin-top:20px">
+			Published on {{ page.date | date: date_format }}
+		</h4>
+		<ul class="post-tags social">
+			{%- for tag in page.categories -%}
+				<li>{{ tag }}</li>
+			{%- endfor -%}
+		</ul>
 	</div>
-	<ul class="post-tags">
-		{%- for tag in page.categories -%}
-			<li>{{ tag }}</li>
-		{%- endfor -%}
-	</ul>
-</div>
+</header>
+
+

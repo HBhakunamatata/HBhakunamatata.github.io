@@ -1,19 +1,40 @@
-<div class="container">
-	<h1>{{ site.texture.title }}</h1>
-	<h2>{{ site.texture.tagline }}</h2>
-	<ul class="social">
-		{%- if site.social_links.github -%}
-			<a href="https://github.com/{{ site.social_links.github }}"><li><i class="icon-github-circled"></i></li></a>
-		{%- endif -%}
-		{%- if site.social_links.linkedIn -%}
-			<a href="https://linkedin.com/{{ site.social_links.linkedIn }}"><li><i class="icon-linkedin-squared"></i></li></a>
-		{%- endif -%}
-		{%- if site.social_links.twitter -%}
-			<a href="https://twitter.com/{{ site.social_links.twitter }}"><li><i class="icon-twitter-squared"></i></li></a>
-		{%- endif -%}
-		{%- if site.social_links.mail -%}
-			<a href="https://{{ site.social_links.mail }}"><li><i class="icon-mail-squared">
-				</i></li></a>
-		{%- endif -%}
-	</ul>
-</div>
+<!-- <header class="texture-{{ site.texture.style }}"> -->
+<header>
+	<!-- 加入导航栏 -->
+	{%- include nav.html -%}
+
+	<!-- intro部分 -->
+	<!-- <div class="texture-black container header-text"> -->
+	<div class="texture-black">
+		<h1>{{ site.texture.title }}</h1>
+		<h2>{{ site.texture.tagline }}</h2>
+		<ul class="social">
+			{%- if site.social_links.github -%}
+				<li>
+					<a href="https://github.com/{{ site.social_links.github }}">
+					<i class="icon-github-circled"></i></a>
+				</li>
+			{%- endif -%}
+			{%- if site.social_links.linkedIn -%}
+				<li>
+					<a href="https://linkedin.com/{{ site.social_links.linkedIn }}">
+					<i class="icon-linkedin-squared"></i></a>
+				</li>
+			{%- endif -%}
+			{%- if site.social_links.twitter -%}
+				<li>
+					<a href="https://twitter.com/{{ site.social_links.twitter }}">
+					<i class="icon-twitter-squared"></i></a>
+				</li>
+			{%- endif -%}
+			{%- if site.social_links.mail -%}
+				<li>
+					<a href="https://{{ site.social_links.mail }}">
+					<i class="icon-mail-squared"></i></a>
+				</li>
+			{%- endif -%}
+		</ul>
+	</div>
+</header>
+
+

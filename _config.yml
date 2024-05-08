@@ -5,7 +5,8 @@ description: > # this means to ignore newlines until "show_exerpts:"
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
 show_excerpts: true # set to true to show excerpts on the homepage
-baseurl:
+baseurl: 
+url: "http://popples.cloud"
 # markdown: GFM
 markdown: kramdown
 
@@ -15,15 +16,19 @@ sass:
   sass_dir: _sass
   style: compressed
 
-permalink: /posts/:title/
+# permalink: /posts/:title/
+permalink: /posts/:title
+
+# local test set favicon
+favicon_ico: /favicon.ico
 
 texture:
   title: Bo Han's Blog
   tagline: Dream to Be a Developer
-  date_format: "%b %-d, %Y"
+  date_format: "%Y-%m-%d"
   style: black
   showNav: true
-  showPicker: false
+  disqus_shortname: games
 
 # generate social links
 social_links:
@@ -35,11 +40,8 @@ social_links:
 
 # If you want to link only specific pages in your header, uncomment
 # this and add the path to the pages in order as they should show up
-#header_pages:
-# - about.md
-
-# Build settings
-# theme: texture
+header_pages:
+  - about.md
 
 plugins:
   - jekyll-seo-tag
