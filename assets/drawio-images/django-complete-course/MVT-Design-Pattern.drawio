@@ -1,0 +1,43 @@
+<mxfile host="Electron" modified="2024-05-13T07:26:13.013Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="FulTFJ6sHn8_G8fpsgzZ" version="24.2.5" type="device">
+  <diagram name="第 1 页" id="DiUvEHI6n03Vo5GLXe6Y">
+    <mxGraphModel dx="1111" dy="854" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="dFfi_SQp2UVN6yaY9VPI-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dFfi_SQp2UVN6yaY9VPI-1" target="dFfi_SQp2UVN6yaY9VPI-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dFfi_SQp2UVN6yaY9VPI-1" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;urls&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="145" y="290" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dFfi_SQp2UVN6yaY9VPI-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dFfi_SQp2UVN6yaY9VPI-2" target="dFfi_SQp2UVN6yaY9VPI-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dFfi_SQp2UVN6yaY9VPI-2" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;views&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="355" y="290" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dFfi_SQp2UVN6yaY9VPI-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dFfi_SQp2UVN6yaY9VPI-3" target="dFfi_SQp2UVN6yaY9VPI-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dFfi_SQp2UVN6yaY9VPI-3" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;templates&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="565" y="290" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dFfi_SQp2UVN6yaY9VPI-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dFfi_SQp2UVN6yaY9VPI-7" target="dFfi_SQp2UVN6yaY9VPI-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dFfi_SQp2UVN6yaY9VPI-7" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;request&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="25" y="300" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="dFfi_SQp2UVN6yaY9VPI-8" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;forms&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="267" y="285" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="dFfi_SQp2UVN6yaY9VPI-9" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;response&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="722" y="300" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="dFfi_SQp2UVN6yaY9VPI-12" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;model&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="480" y="285" width="80" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
