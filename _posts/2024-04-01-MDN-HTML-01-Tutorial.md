@@ -19,11 +19,14 @@ The _behavior_ of each element is controlled by _attrbutes_ stated in element.
 
 2.meta
     charset  <meta charset="utf-8"/>
-    name-content <meta name="author" content="fjs">
+    name-content 
+      <meta name="author" content="***"> 
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 3.favion  <link rel="icon" href="">
 4.css     <link rel="stylesheet" href="">
 5.javascript <script src="" defer>
 
+<!DOCTYPE html>
 <html lang="en">
 ```
 
