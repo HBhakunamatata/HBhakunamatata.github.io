@@ -6,7 +6,10 @@ date:   2021-05-04
 categories: Database-Design
 ---
 
-1.maintain data dictionary 2.maintain index 3.maintain table structure 4.Split the table vertically and horizontally when appropriate
+1.maintain data dictionary  
+2.maintain index  
+3.maintain table structure  
+4.Split the table vertically and horizontally when appropriate
 
 ## 4.1 Dictionary
 
@@ -33,6 +36,9 @@ WHERE a.table_name=’customer’
 
 ## 4.2 Index
 
+- 通常选where order-by group-by后面的字段
+- 索引列不要包括太长的数据类型（MD5等减少长度）
+
 - 不是越多越好，会降低读写效率
 - 定期维护索引碎片
 - 不要在SQL语句中强制索引关键字
@@ -44,16 +50,16 @@ WHERE a.table_name=’customer’
 - 维护字典
 - 控制表的宽度和大小
 
-## 4.4 Split table vertically
+## 4.4 Split table vertically（几十列时）
 
 - 经常查询的放在一起
 - text、blob放至附加表中
 
-## 4.5 Split table horizontally
+## 4.5 Split table horizontally （数据量超过几千万条时）
 
-- 使用主键hash ？？？
+- 使用主键hash
 
-![image-20210504144957579](E:\git_pro\HBhakunamatata.github.io\_posts\images\database_design\image-split-horizontally.png)
+![image-20210504144957579](/assets/post-images/database_design/image-split-horizontally.png)
 
 ## Note
 

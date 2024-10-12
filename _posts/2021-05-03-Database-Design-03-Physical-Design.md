@@ -6,9 +6,7 @@ date:   2021-05-03
 categories: Database-Design
 ---
 
-DBMS --> database,table,column naming --> fields choose --> 
-
-De-normalization
+DBMS --> database,table,column naming --> fields choose --> De-normalization
 
 ## 3.1 DBMS Choose
 
@@ -33,9 +31,9 @@ De-normalization
 ### 3.3.1 Choose Principle
 
 - 数字型 --> 日期 / 二进制 --> 字符型
-- 相同级别的按存贮空间从大到小
+- 相同级别的按存储空间从小到大
 
-![image-20210504131120665](E:\git_pro\HBhakunamatata.github.io\_posts\images\database_design\image-field-size.png)
+![image-20210504131120665](/assets/post-images/database_design/image-field-size.png)
 
 ### 3.3.2 Reason
 
@@ -71,14 +69,14 @@ De-normalization
 
 ## 3.4 Other Question
 
-### 3.4.1 how to choose index
+### 3.4.1 how to choose primary key
 
 - Distinguish between business primary key and database primary key
 
   - bpk : mark the business
   - dpk : optimize storage structure
 
-  > innoDB generates a 6KB primary key by default.
+  > innoDB generates a 6Kb primary key by default.
 
 - 按照DB类型考虑 primary key 是否需要自增
 
