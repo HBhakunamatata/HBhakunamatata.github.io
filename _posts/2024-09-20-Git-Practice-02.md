@@ -9,7 +9,7 @@ categories: git
 
 ## 1.1 What is Git
 
-Git is a ditributed version control system that handle codes.
+Git is a ditributed version control system that stores codes.
 Git is a list of code modifying records (time arthor place content).
 
 ![git-three-main-components](/assets/post-images/git/git-three-components.png)
@@ -83,6 +83,8 @@ git checkout dev_branch
 
 git add
 git commit -m
+
+git checkout main_branch
 git merge --no-ff -m "message"
 ```
 
