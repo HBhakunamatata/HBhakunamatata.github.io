@@ -13,7 +13,7 @@ View / Procedure / Cursor / Trigger
 视图 --> 虚拟__表__(不包含数据) --> 代替用户向实际表中检索数据(代理) --> 保护基表
 
 1. 为什么使用视图
-   - 重用SQL，简化SQL
+   - 重用SQL,简化SQL
    - 由于安全权限等原因，只检索表的部分而不是整个表
    - 更改数据表示格式
 
@@ -45,7 +45,7 @@ drop view if exists view_emp_without_privacy;
 ## 5.2 存储过程
 
 - 为以后的使用而保存的一条或者多条SQL语句的集合
-- why use：封装SQL语句(封装) / 减少错误(安全) / 执行比单独SQL快(高效)
+- why use : 封装SQL语句(封装) / 减少错误(安全) / 执行比单独SQL快(高效)
 
 ```sql
 ## 创建
@@ -66,7 +66,7 @@ call avgSalaryOfN(10, @average1)
 select @average1;
 
 # 查看procedure
-???
+show create procedure totalTopN;
 
 ## 删除
 drop procedure if exists averageOfN;
@@ -75,7 +75,7 @@ drop procedure if exists averageOfN;
 ## 5.3 游标Cursor
 
 - 在检索出来的结果集中前进(或退后)一行或多行
-- MySQL中，游标只能在存储过程里使用
+- MySQL中,游标只能在存储过程里使用
 
 ## 5.4 触发器 Trigger
 
@@ -98,6 +98,6 @@ end;
 drop trigger if exists afterInsertEmp;
 ```
 
-- before触发器失败，则后续的语句也不会执行
-- SQL语句失败，则after触发器也不会执行
+- before触发器失败,则后续的语句也不会执行
+- SQL语句失败,则after触发器也不会执行
 

@@ -1,3 +1,4 @@
+
 ---
 layout: post
 title:  "MySQL-07 3C and Security"
@@ -44,7 +45,7 @@ rename user old_name to new_name;
 drop user if exists user_name;
 
 ## change password
-set password for user_name = password("xxxxxxx");
+alter user `username` identified by "new_password";
 
 ## access control
 show grants for user_name;
