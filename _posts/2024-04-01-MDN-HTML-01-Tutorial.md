@@ -37,7 +37,6 @@ The _behavior_ of each element is controlled by _attrbutes_ stated in element.
 段落: p
 列表: ol->li ul->li
 强调(是否有语义的需要): em strong <---> span
-
 ```
 
 Why we need structure? 
@@ -102,7 +101,7 @@ Hyperlink connets network resource.
 
 ## 1.5 Advanced Text formatting
 
-### 1.5.1 Describtion List
+### 1.5.1 Description List
 
 ```html
 <dl>
@@ -157,8 +156,7 @@ Hyperlink connets network resource.
 <p>
   According to the
   <a href="/zh-CN/docs/Web/HTML/Element/blockquote">
-    <cite>MDN blockquote page</cite></a
-  >:
+    <cite>MDN blockquote page</cite></a>:
 </p>
 
 <blockquote
