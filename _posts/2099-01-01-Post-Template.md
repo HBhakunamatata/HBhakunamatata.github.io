@@ -1,0 +1,88 @@
+---
+layout: post
+title: "Git Use"
+description: 
+date: 2020-01-01
+categories: Git
+---
+How to use Git
+
+## Git and Features
+
+- Distributed
+- Snapshot stream
+
+- pic : workingspace, stage, repo
+
+## Local repository
+
+1. Create repository
+
+> - git config --global user.name "username"
+> - git config --global user.email "useremail"
+> - git init
+> - git clone {url}
+
+- (The directory .git must not be changed casually)
+
+2. Manipulation  
+
+> - git status
+> - git add filename1, filename2 ...
+> - git rm filename1, filename2 ...
+> - git mv filename_old, filename_new
+> - git commit -m "comment"
+
+3. Time machine
+
+> - git log
+> - git log --pretty=oneline
+> - git reflog
+> - git reset --hard commentID
+
+## Remote repository (Github)
+
+1. two methods : https / ssh
+
+2. Approaches:
+
+- (1) add to stage  
+> git add filename
+
+- (2) add to local repository  
+> git commit -m "Comment"
+
+- (3) push to remote repository
+> git push
+
+- (4) pull the latest code version
+> git pull  
+
+3. Remote Manipulation
+
+> - git remote rename oldname newname
+> - git remote rm filename
+
+3. branch (cruds)
+
+> - git branch branchname  
+> - git branch -d branchname  
+> - git merge branchname  
+> - git branch 
+> - git checkout branchname 
+
+4. Conflict
+
+> - git pull  
+> - talk about the diff and figure out the result  
+> - then git add / git commit the result  
+> - finally git merge  / git push
+>
+> Another method
+>
+> - git stash
+> - git pull
+> - git stash pop stash@{0}
+> - modify the difference and merge them
+> - git commit / git push
+> - git stash clear
