@@ -6,7 +6,7 @@ date: 2025-07-29
 categories: Docker
 ---
 
-# 1. Problem
+## 1. Problem
 
 occur exception when run docker Spring Boot Application image created by Dockerfile
 
@@ -28,14 +28,13 @@ Exception in thread "main" java.lang.ClassNotFoundException: cloud.popples.rabbi
         at org.springframework.boot.loader.JarLauncher.main(JarLauncher.java:88)
 ```
 
-# Trouble shot
+## 2. Trouble shot
 
-spring-boot-maven-plugin cannot find main class towards <mainClass> in Configuration
+spring-boot-maven-plugin cannot find main class towards __mainClass__ tag in Configuration
 
 and the path of main class must be ensure valid
 
-
-# Solution
+## 3. Solution
 
 ```xml
 <plugin>
@@ -57,7 +56,7 @@ and the path of main class must be ensure valid
 </plugin>
 ```
 
-# Enlightment
+## 4.Enlightment
 
 1. spring-boot-maven-plugin functions
     - (1) repackage all project jars to enable java -jar xxx
