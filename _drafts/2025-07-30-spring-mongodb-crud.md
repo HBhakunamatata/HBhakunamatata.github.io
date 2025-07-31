@@ -16,7 +16,11 @@ db.c.find({y: null})
 db.c.find({y: {$type : 10}})
 db.c.find({y: {$in: [null], $exists: true}})
 
-# 
+# only query y not exist
+db.c.find({y : {$exists: false} })
+
+# query y is not null
+db.c.find({y: {$ne : null}})
 ```
 
 ## 2. or & and
