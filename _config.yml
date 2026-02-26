@@ -1,17 +1,9 @@
 title: Bo Han's Blog
 author: Bo Han
-description: > # this means to ignore newlines until "show_exerpts:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-show_excerpts: true # set to true to show excerpts on the homepage
-baseurl: 
-url: "http://popples.cloud"
+
 # markdown: GFM
 markdown: kramdown
 
-# Minima date format
-# refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
 sass:
   sass_dir: _sass
   style: compressed
@@ -22,21 +14,15 @@ permalink: /posts/:title
 # local test set favicon
 favicon_ico: /favicon.ico
 
-texture:
-  title: Bo Han's Blog
-  tagline: Dream to Be a Developer
-  date_format: "%Y-%m-%d"
-  style: black
-  showNav: true
-  disqus_shortname: games
+# pagination
+paginate: 8 # 每页显示的条数
+paginate_path: "/blog/page:num/" # 分页生成的路径
 
 # generate social links
 social_links:
   github: HBhakunamatata
   linkedIn: hanbo
   mail: hanbo9501@gmail.com
-  rss: rss
- 
 
 # If you want to link only specific pages in your header, uncomment
 # this and add the path to the pages in order as they should show up

@@ -1,40 +1,4 @@
-<!-- <header class="texture-{{ site.texture.style }}"> -->
-<header>
-	<!-- 加入导航栏 -->
-	{%- include nav.html -%}
-
-	<!-- intro部分 -->
-	<!-- <div class="texture-black container header-text"> -->
-	<div class="texture-black">
-		<h1>{{ site.texture.title }}</h1>
-		<h2>{{ site.texture.tagline }}</h2>
-		<ul class="social">
-			{%- if site.social_links.github -%}
-				<li>
-					<a href="https://github.com/{{ site.social_links.github }}">
-					<i class="icon-github-circled"></i></a>
-				</li>
-			{%- endif -%}
-			{%- if site.social_links.linkedIn -%}
-				<li>
-					<a href="https://linkedin.com/{{ site.social_links.linkedIn }}">
-					<i class="icon-linkedin-squared"></i></a>
-				</li>
-			{%- endif -%}
-			{%- if site.social_links.twitter -%}
-				<li>
-					<a href="https://twitter.com/{{ site.social_links.twitter }}">
-					<i class="icon-twitter-squared"></i></a>
-				</li>
-			{%- endif -%}
-			{%- if site.social_links.mail -%}
-				<li>
-					<a href="https://{{ site.social_links.mail }}">
-					<i class="icon-mail-squared"></i></a>
-				</li>
-			{%- endif -%}
-		</ul>
-	</div>
-</header>
-
-
+<!-- 加入导航栏 -->
+<nav class="navbar navbar-expand bg-body-tertiary bg-primary fixed-top" data-bs-theme="dark">
+	{% include navigator.html %}
+</nav>

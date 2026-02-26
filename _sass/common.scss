@@ -121,6 +121,7 @@ main {
 }
 
 .posts {
+    margin-top: 40px;
 	list-style-type: none;
 	padding: 0;
 	> li {
@@ -132,9 +133,6 @@ main {
 	}
 }
 
-.posts {
-	margin-top: 40px;
-}
 
 .post-meta {
 	display: flex;

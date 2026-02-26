@@ -1,85 +1,80 @@
 ---
 ---
 
-// @import "theme";
-@import "common";
+body {
+    padding-top: 6rem;
+}
 
-//
-// Basic Container Class
-//
-.container {
-	margin:0 150px;
-	max-width: 760px;
+.lower-bg {
+    background-color: #d8d8d8;
+}
 
-	div.highlighter-rouge {
-		right: 150px;
-	}
+.nav-split {
+  border-right: 1.8px solid #4a4a4a !important;
+  padding-right: 0.5rem;
+}
 
-	@media screen and  (max-width: $mobileWidth) {
-		margin:0 15px; 
-		div.highlighter-rouge {
-			right: 15px;
-		}
-		div.highlight {
-			padding: 30px 15px;
-		}
-	}
+.posts, .tags, .catalogs {
+	list-style-type: none;
+}
 
-	@media screen and (max-width: $tabWidth) and (min-width: $mobileWidth){
-		margin:0 40px;	
-		div.highlighter-rouge {
-			right: 40px;
-		}
-		div.highlight {
-			padding: 30px 40px;
-		}
-	}
-
-	@media screen and (max-width: $desktopWidth) and (min-width: $tabWidth){
-		margin:0 80px;
-		div.highlighter-rouge {
-			right: 80px;
-		}
-		div.highlight {
-			padding: 30px 80px;
-		}
-	}
-
-	@media screen and (min-width: $desktopWidth) and (max-width: 1280px) {
-		margin:0 100px;
-		div.highlighter-rouge {
-			right: 100px;
-		}
-		div.highlight {
-			padding: 30px 100px;
-		}
+.post-meta {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+    
+	a:hover {
+		border-bottom: none;
 	}
 }
 
-
-.texture-black {
-    padding: 2em 0;
-    background-image: url('{{ site.baseurl }}/assets/images/black.jpg');
-
-    h1, h2, h4 {
-        text-align: center;
-        color: #fff;
-    }
+.post-link {
+    flex: 4 200px;
+    text-decoration: none;
 }
 
-.texture-blue {
-    background-image: url('{{ site.baseurl }}/assets/images/blue.jpg');
-
-    h2 {
-        color: #ddd;
-    }
-
-    .social i:hover {
-        color: #eee;
-    }
-
-    .post-date {
-        color: #ccc;
-    }
+.post-title {
+	text-decoration: none;
+	color: #272727;
+	margin: 0.01rem;
+	&:hover {
+		// color: #868686;
+		text-decoration: underline;
+		border-bottom: 0;
+	}
 }
 
+.aside-post-title {
+	text-decoration: none;
+	color: #272727;
+	// margin: 0.01rem;
+	&:hover {
+		color: #464647;
+		text-decoration: underline;
+		border-bottom: 0;
+	}
+}
+
+.post-date {
+	color: #999;
+	.icon-calendar {
+		margin-right: 6px;
+	}
+}
+
+// 5. footer 部分
+
+.footer {
+	// background-size: cover;
+	background-image: url('/assets/images/black.jpg');
+	padding: 6px 0;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.footer-text {
+	align-self: center;
+    color: #999;
+    font-size: 0.9em;
+}

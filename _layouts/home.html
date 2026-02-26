@@ -1,40 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	{% include head.html %}
 </head>
-<body>
-	{% include page_header.html %}
+
+<body class="lower-bg">
+	<header class="container">
+		{% include page_header.html %}
+	</header>
 	
-	<main>
-		<div class="container">
-			<!-- 博客文章列表 -->
-			{% if site.posts.size > 0 %}
-			<ul class="posts">
-				{% for post in site.posts %}
-				<li>
+	<main class="container">
+		<div class="row">
+			<div class="bg-light col-8 m-2">
+				<!-- 博客文章列表 -->
+				{% if paginator.posts.size > 0 %}
+				<ul class="posts list-group list-group-flush">
 					{% assign date_format = site.minima.date_format | default: "%Y-%m-%d" %}
-					<div class="post-meta">
-						<a class="post-link" href="{{ post.url | relative_url }}">
-							<h2 class="post-title">{{ post.title | escape }}</h2>
-						</a>
-						<div class="post-date"><i class="icon-calendar"></i>{{ post.date | date: date_format }}</div>
-					</div>
-					<div class="post">
-						{% if site.show_excerpts %}
-						{{ post.excerpt }}
+					{% for post in paginator.posts %}
+					<li class="border-bottom border-1 border-secondary p-2">
+						<div class="container">
+							<a class="post-title" href="{{ post.url | relative_url }}">
+								<p class="h3">{{ post.title | escape }}</p>
+							</a>
+							<div class="d-flex flex-row m-2">
+								<div class="d-flex pe-3"><i class="bi bi-calendar-minus-fill pe-1"></i> {{ post.date | date: date_format }}</div>
+								<div class="d-flex pe-3"><i class="bi bi-person-fill pe-1"></i>Bo Han</div>
+								<div class="d-flex pe-3">
+									<i class="bi bi-card-list pe-1"></i>
+									<ul class="list-inline">
+										{%- for tag in post.categories -%}
+											<!-- <li class="list-inline-item badge rounded-pill text-bg-secondary">
+												<a class="color-light" href="{{ site.baseurl }}/tags#{{ tag | slugify }}">{{ tag }}</a>
+											</li> -->
+											<li class="list-inline-item badge text-bg-secondary">{{ tag }}</li>
+										{%- endfor -%}
+									</ul>
+								</div>
+								<div class="d-flex pe-3">
+									<i class="bi bi-tags-fill pe-1"> </i>
+									<ul class="list-inline">
+										{%- for tag in post.categories -%}
+											<li class="list-inline-item badge rounded-pill text-bg-secondary">{{ tag }}</li>
+										{%- endfor -%}
+									</ul>
+								</div>
+							</div>
+						</div>
+					</li>
+					{% endfor %}
+				</ul>
+				{% endif %}
+
+				<div id="pagination" class="container mt-4 mb-4">
+					<ul class="pagination justify-content-center">
+						{% if paginator.previous_page %}
+						<li class="page-item">
+							<a class="page-link">Previous</a>
+						</li>
+						{% else %}
+						<li class="page-item disabled">
+							<a class="page-link" href="{{ paginator.previous_page_path }}">Previous</a>
+						</li>
 						{% endif %}
+
+						{% for num in (1..paginator.total_pages) %}
+							{% if num == 1 and num == paginator.page %}
+							<li class="page-item active"><a class="page-link" href="/">{{ num }}</a></li>
+							{% elsif num == 1 and num != paginator.page %}
+							<li class="page-item"><a class="page-link" href="/">{{ num }}</a></li>
+							{% elsif num != 1 and num == paginator.page %}
+							<li class="page-item active"><a class="page-link" href="/blog/page{{num}}/">{{ num }}</a></li>
+							{% elsif num != 1 and num != paginator.page %}
+							<li class="page-item"><a class="page-link" href="/blog/page{{num}}/">{{ num }}</a></li>
+							{% endif %}
+						{% endfor %}
+						
+						{% if paginator.next_page %}
+						<li class="page-item">
+							<a class="page-link" href="{{ paginator.next_page_path }}">Next</a>
+						</li>
+						{% else %}
+						<li class="page-item disabled">
+							<a class="page-link" href="{{ paginator.next_page_path }}">Next</a>
+						</li>
+						{% endif %}
+					</ul>
+				</div>
+			</div>
+
+			<aside class="col m-2 p-10">
+				<div class="bg-light" id="recent-posts">
+					<div class="d-flex ps-3 pt-2 border-bottom border-2 border-secondary">
+						<p class="h4 p-2">
+							<i class="bi bi-pencil-square me-2"></i>
+							Recent Posts
+						</p>
 					</div>
-				</li>
-				{% endfor %}
-			</ul>
-			{% endif %}
+					<!-- 近期博客文章列表 -->
+					{% if site.posts.size > 0 %}
+					<ul class="container posts pt-4 pb-3 ms-2">
+						{% for post in site.posts limit:10 %}
+						<li class="container ">
+							<a class="aside-post-title" href="{{ post.url | relative_url }}">
+								<p>{{ post.title | escape }}</p>
+							</a>
+						</li>
+						{% endfor %}
+					</ul>
+					{% endif %}
+				</div>
+
+				<div class="bg-light" id="recent-posts">
+					<div class="d-flex ps-3 pt-2 border-bottom border-2 border-secondary">
+						<p class="h4 p-2">
+							<i class="bi bi-list-check me-2"></i>
+							Categories
+						</p>
+					</div>
+					<!-- 文章分类列表 -->
+					{% capture category_string %}
+					{% for category in site.categories %}
+						{% comment %} 将数量补齐为 4 位（如 0012），确保按字母序排序时也是数值序 {% endcomment %}
+						{% assign count = category[1].size %}
+						{{ count }}|{{ category[0] }}{% unless forloop.last %}::{% endunless %}
+					{% endfor %}
+					{% endcapture %}
+
+					{% comment %} 将字符串转为数组，倒序排列（从多到少）并循环 {% endcomment %}
+					{% assign sorted_categories = category_string | split: "::" | sort | reverse %}
+					<ul class="container p-3">
+						{% for item in sorted_categories limit:10 %}
+						{% assign parts = item | split: "|" %}
+						{% assign count = parts[0] | plus: 0 %}
+						{% assign name = parts[1] %}
+						<li class="container ps-3 mt-1 d-flex justify-content-between">
+							<span class="h6">
+								{{ name | slugify }}
+							</span>
+							<span class="h6 badge text-bg-light">{{ count }}</span>
+						</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</aside>
 		</div>
+
+		
 	</main>
 
 	<!-- 引入 footer -->
 	{% include footer.html %}
 </body>
+<script src="{{ "/assets/js/bootstrap.js" | relative_url }}"></script>
 </html>
 
 

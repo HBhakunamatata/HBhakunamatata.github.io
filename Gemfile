@@ -14,3 +14,5 @@ gem "csv"
 gem "base64"
 gem "bigdecimal"
 gem "faraday_middleware-request-retry"
+gem "webrick", "~> 1.9"
+gem 'bootstrap', '~> 5.3.8'

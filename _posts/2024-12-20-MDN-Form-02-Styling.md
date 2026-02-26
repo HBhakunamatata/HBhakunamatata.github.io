@@ -3,7 +3,7 @@ layout: post
 title: "MDN Form Styling"
 description: 
 date: 2024-12-20
-categories: 
+categories: Form
 ---
 
 
