@@ -1,0 +1,56 @@
+---
+layout: template
+title: Tags
+---
+
+<div class="row">
+	<div class="bg-light col-8 m-2 p-4">
+        <h1 class="pt-2 ps-1 mb-0">{{page.title}}</h1>
+        <hr class="border border-1 border-secondary mt-3 mb-3">
+        
+        <div class="ps-3">
+            {% for category in site.categories %}
+            <h3 id="{{category | first}}">{{ category | first}}</h3>
+            <ul>
+                {% for posts in category  %}
+                    {% for post in posts %}
+                        {% if post.url %}
+                        <li>
+                            <h5 class="pt-2 pb-2 mb-0">
+                                <a class="post-title" href="{{ post.url | relative_url }}">
+                                    {{ post.title | escape }}
+                                </a>
+                            </h5>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+            {% endfor %}
+        </div>
+            
+    </div>
+
+    <aside class="col m-2 p-10">
+        <div class="bg-light">
+            <div class="d-flex ps-3 pt-2 border-bottom border-2 border-secondary">
+                <p class="h4 p-2">
+                    <i class="bi bi-pencil-square me-2"></i>
+                    Content
+                </p>
+            </div>
+            {% if site.posts.size > 0 %}
+            <ul class="container posts pt-4 pb-3 ms-2">
+                {% for category in site.categories %}
+                <li class="container ps-3 mt-1 d-flex justify-content-between">
+                    <a class="h6 aside-post-title" href="#{{ category | first }}">
+                        {{ category | first }}
+                    </a>
+                    <span class="h6 badge text-bg-light">{{ category | last | size }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+	</aside>
+</div>

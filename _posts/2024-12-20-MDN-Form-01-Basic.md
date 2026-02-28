@@ -14,7 +14,7 @@ submitting data to the server
 
 ## 1.1 structure
 
-```HTML
+```html
 <form>
   <section>
     <h2>联系人信息</h2>
@@ -78,7 +78,7 @@ submitting data to the server
 form fieldset legend textarea label input button
 input type : text checkbox radio file hidden image password submit
 
-```HTML
+```html
 <input type="text" id="comment" name="comment" value="I'm a text field" />
 <input type="password" id="pwd" name="pwd" />
 
@@ -91,9 +91,9 @@ input type : text checkbox radio file hidden image password submit
 <input type="submit" value="This is a submit button" />
 ```
 
-## 1.3 HTML5 elements
+## 1.3 html5 elements
 
-```HTML
+```html
 <input type="email" id="email" name="email" />
 <input type="search" id="search" name="search" />
 <input type="tel" id="tel" name="tel" />
@@ -102,7 +102,7 @@ input type : text checkbox radio file hidden image password submit
 <input type="datetime-local" name="datetime" id="datetime" />
 ```
 
-```HTML
+```html
 <label for="price">Choose a maximum house price: </label>
 <input
   type="range"
@@ -128,12 +128,12 @@ price.addEventListener("input", () => {
 
 ## 1.4 Other elements
 
-```HTML
+```html
 <textarea cols="30" rows="8"></textarea>
 <progress max="100" value="75">75/100</progress>
 ```
 
-```HTML
+```html
 <!-- method 1 -->
 <select id="groups" name="groups">
   <optgroup label="fruits">

@@ -1,0 +1,53 @@
+<div class="bg-light" id="recent-posts">
+    <div class="d-flex ps-3 pt-2 border-bottom border-2 border-secondary">
+        <p class="h4 p-2">
+            <i class="bi bi-pencil-square me-2"></i>
+            Recent Posts
+        </p>
+    </div>
+    <!-- 近期博客文章列表 -->
+    {% if site.posts.size > 0 %}
+    <ul class="container posts pt-4 pb-3 ms-2">
+        {% for post in site.posts limit:8 %}
+        <li class="container ">
+            <a class="aside-post-title" href="{{ post.url | relative_url }}">
+                <p>{{ post.title | escape }}</p>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+
+<div class="bg-light" id="recent-posts">
+    <div class="d-flex ps-3 pt-2 border-bottom border-2 border-secondary">
+        <p class="h4 p-2">
+            <i class="bi bi-list-check me-2"></i>
+            Categories
+        </p>
+    </div>
+    <!-- 文章分类列表 -->
+    {% capture category_string %}
+    {% for category in site.categories %}
+        {% comment %} 将数量补齐为 4 位（如 0012），确保按字母序排序时也是数值序 {% endcomment %}
+        {% assign count = category[1].size %}
+        {{ count }}|{{ category[0] }}{% unless forloop.last %}::{% endunless %}
+    {% endfor %}
+    {% endcapture %}
+
+    {% comment %} 将字符串转为数组，倒序排列（从多到少）并循环 {% endcomment %}
+    {% assign sorted_categories = category_string | split: "::" | sort | reverse %}
+    <ul class="container p-3">
+        {% for item in sorted_categories limit:8 %}
+        {% assign parts = item | split: "|" %}
+        {% assign count = parts[0] | plus: 0 %}
+        {% assign name = parts[1] %}
+        <li class="container ps-3 mt-1 d-flex justify-content-between">
+            <span class="h6">
+                {{ name | slugify }}
+            </span>
+            <span class="h6 badge text-bg-light">{{ count }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>

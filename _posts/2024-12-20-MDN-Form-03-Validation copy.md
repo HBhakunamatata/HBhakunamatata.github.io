@@ -22,7 +22,7 @@ Server Validation
 
 ### 1.1 required
 
-```CSS
+```css
 input:invalid {
   border: 2px dashed red;
 }
@@ -34,7 +34,7 @@ input:valid {
 
 ### 1.2 regex
 
-```HTML
+```html
 <form>
   <label for="choose">Would you prefer a banana or a cherry?</label>
   <input id="choose" name="i_like" required pattern="banana|cherry" />
@@ -44,7 +44,7 @@ input:valid {
 
 ### 1.3 narrow the length and range
 
-```HTML
+```html
 <form>
   <div>
     <label for="choose">Would you prefer a banana or a cherry?</label>
@@ -63,7 +63,7 @@ input:valid {
 
 ## 2. Javascript Validation
 
-```HTML
+```html
 <form>
   <p>
     <label for="mail">

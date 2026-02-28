@@ -1,8 +1,12 @@
 title: Bo Han's Blog
 author: Bo Han
 
-# markdown: GFM
+# markdown
 markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 
 sass:
   sass_dir: _sass
@@ -15,7 +19,7 @@ permalink: /posts/:title
 favicon_ico: /favicon.ico
 
 # pagination
-paginate: 8 # 每页显示的条数
+paginate: 10 # 每页显示的条数
 paginate_path: "/blog/page:num/" # 分页生成的路径
 
 # generate social links
@@ -23,11 +27,6 @@ social_links:
   github: HBhakunamatata
   linkedIn: hanbo
   mail: hanbo9501@gmail.com
-
-# If you want to link only specific pages in your header, uncomment
-# this and add the path to the pages in order as they should show up
-header_pages:
-  - about.md
 
 plugins:
   - jekyll-seo-tag

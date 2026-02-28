@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title:  "MySQL-07 3C and Security"

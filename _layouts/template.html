@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	{% include head.html %}
+</head>
+
+<body class="lower-bg d-flex flex-column min-vh-100">
+	<header class="container">
+		{% include header.html %}
+	</header>
+	
+    <main class="container flex-grow-1">
+        {{ content }}
+    </main>
+	
+
+	<!-- 引入 footer -->
+	<footer>
+		{% include footer.html %}
+	</footer>
+	
+</body>
+<script src="{{ "/assets/js/bootstrap.js" | relative_url }}"></script>
+</html>

@@ -1,40 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	{% include head.html %}
-</head>
-<body>
-  <header>
-		{%- include post_header.html -%}
-	</header>
-  
-  <main>
-    <div class="container">
-      <div class="post-container">
-          {{ content }}
-      </div>
+---
+layout: template
+title: post
+---
 
-        <!-- Configure Disqus -->
-      {%- if site.texture.disqus_shortname -%}
-        <div id="disqus_thread" style="margin-top:25px"></div>
-        <script>
-          var disqus_config = function () {
-            this.page.url = '{{ page.url | absolute_url }}';
-            this.page.identifier = '{{ page.url | absolute_url }}';
-          };
-          (function() {
-            var d = document, s = d.createElement('script');
-            s.src = 'https://{{ site.texture.disqus_shortname }}.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', + new Date());
-            (d.head || d.body).appendChild(s);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-      {%- endif -%}
+<div class="row">
+    <div class="bg-light col-8 m-2 p-4">
+        <div>
+        {%- assign date_format = site.minima.date_format | default: "%Y-%m-%d" -%}
+        <div class="d-flex justify-content-center">
+            <h1>{{ page.title }}</h1>
+        </div>
+        <div class="d-flex flex-row m-1 justify-content-center">
+            <div class="d-flex pe-3"><i class="bi bi-calendar-minus-fill pe-1"></i> {{ page.date | date: date_format }}</div>
+            <div class="d-flex pe-3"><i class="bi bi-person-fill pe-1"></i>Bo Han</div>
+            <div class="d-flex pe-3 align-items-center">
+            <i class="bi bi-card-list pe-1"></i>
+            <ul class="list-group list-group-horizontal">
+                {%- for tag in page.categories -%}
+                <li class="me-1 badge text-bg-secondary">{{ tag }}</li>
+                {%- endfor -%}
+            </ul>
+            </div>
+            <div class="d-flex pe-3 align-items-center">
+            <i class="bi bi-tags-fill pe-1"> </i>
+            <ul class="list-group list-group-horizontal">
+                {%- for tag in page.categories -%}
+                <li class="me-1 badge rounded-pill text-bg-secondary">{{ tag }}</li>
+                {%- endfor -%}
+            </ul>
+            </div>
+        </div>
+        </div>
+
+        <hr class="border border-1 border-secondary m-0 ">
+        
+        <div class="pt-3 pb-3 ps-1 pe-1">
+        {{ content }}
+        </div>
     </div>
-  </main>
-  	<footer class="footer">
-		{%- include footer.html -%}
-	</footer>
-</body>
-</html>
+
+    <aside class="col m-2 p-10">
+        {% include aside.html %}
+    </aside>
+</div>
