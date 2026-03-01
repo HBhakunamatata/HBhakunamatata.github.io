@@ -3,7 +3,7 @@ layout: post
 title: "MyBatis-00 Overview and Review"
 description: 
 date: 2020-07-27
-categories: Maven MyBatis
+categories: MyBatis
 ---
 Overview and Review to MyBatis
 

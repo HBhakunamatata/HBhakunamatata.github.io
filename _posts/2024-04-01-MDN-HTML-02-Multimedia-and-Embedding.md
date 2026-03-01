@@ -3,7 +3,8 @@ layout: post
 title: "MDN HTML Part2 - Media and Embedding"
 description: 
 date: 2024-01-01
-categories: Python
+categories: Frontend
+tags: HTML
 ---
 
 ## 1.1 Images

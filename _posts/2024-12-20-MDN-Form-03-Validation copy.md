@@ -3,7 +3,8 @@ layout: post
 title: "MDN Form Validation"
 description: 
 date: 2024-12-20
-categories: Form
+categories: Frontend
+tags: Form
 ---
 
 HTML5 Validation

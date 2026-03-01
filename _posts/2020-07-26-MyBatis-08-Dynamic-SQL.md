@@ -3,7 +3,7 @@ layout: post
 title: "MyBatis-08 Dynamic SQL"
 description: 
 date: 2020-07-26
-categories: Maven MyBatis
+categories: MyBatis
 ---
 Dynamic SQL is a sql statement in world.  
 Dynamic SQL is a safe sql statement according to different conditions.

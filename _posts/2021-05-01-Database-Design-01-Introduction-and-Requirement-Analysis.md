@@ -3,7 +3,7 @@ layout: post
 title:  "Database-Design-01 Introduction and Requirement Analysis"
 description: 
 date:   2021-05-01
-categories: Database Design
+categories: Database-Design
 ---
 
 ## 1.1 Introduction

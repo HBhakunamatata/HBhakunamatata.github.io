@@ -3,7 +3,8 @@ layout: post
 title:  "Spring-06 Proxy Pattern"
 description: 
 date:   2020-07-31
-categories: Spring AOP Proxy
+categories: Spring
+tags: Wiring
 ---
 Static and Dynamic Proxy
 

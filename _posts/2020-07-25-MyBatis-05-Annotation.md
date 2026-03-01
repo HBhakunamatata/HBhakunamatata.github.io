@@ -3,7 +3,7 @@ layout: post
 title: "MyBatis-05 Annotation"
 description: 
 date: 2020-07-25
-categories: Maven MyBatis
+categories: MyBatis
 ---
 implementing CRUD using annotation (Reflection)
 

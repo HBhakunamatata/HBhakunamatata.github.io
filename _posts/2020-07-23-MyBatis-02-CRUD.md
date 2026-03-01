@@ -3,7 +3,7 @@ layout: post
 title: "MyBatis-02 CRUD"
 description: implement CRUD in Mapper.xml
 date: 2020-07-22
-categories: MyBatis Maven
+categories: MyBatis
 ---
 implement CRUD in MyBatis
 

@@ -3,7 +3,7 @@ layout: post
 title: "MyBatis-09 Cache"
 description: 
 date: 2020-07-26
-categories: Maven MyBatis
+categories: MyBatis
 ---
 Use cache mechanism in MyBatis
 

@@ -3,7 +3,8 @@ layout: post
 title: "MDN HTML Part3 - Table"
 description: 
 date: 2024-01-01
-categories: Python
+categories: Frontend
+tags: HTML
 ---
 
 ## 1.1 Table

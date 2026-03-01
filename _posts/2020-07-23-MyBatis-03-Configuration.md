@@ -3,7 +3,7 @@ layout: post
 title: "MyBatis-03 Configurations"
 description: 
 date: 2020-07-23
-categories: MyBatis Maven
+categories: MyBatis
 ---
 Configuraitons in mybatis-config.xml  
 [https://mybatis.org/mybatis-3/zh/configuration.html](https://mybatis.org/mybatis-3/zh/configuration.html)

@@ -3,7 +3,8 @@ layout: post
 title: "Git Practice 02"
 description: 
 date: 2024-09-20
-categories: git
+categories: Version-Control
+tags: Git
 ---
 
 

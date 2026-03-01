@@ -3,7 +3,7 @@ layout: post
 title: "MyBatis-07 Single--Multiple"
 description: 
 date: 2020-07-26
-categories: Maven MyBatis
+categories: MyBatis
 ---
 The solution the single-multiple issue
 

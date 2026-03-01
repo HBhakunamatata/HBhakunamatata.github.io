@@ -3,7 +3,7 @@ layout: post
 title:  "SpringMVC-04 Controller and Restful"
 description: 
 date:   2020-08-03
-categories: SpringMVC Restful
+categories: SpringMVC
 ---
 This post is about @Controller and @RequestMapper.  
 When you get a Controller, you must give it a RequestMapper.

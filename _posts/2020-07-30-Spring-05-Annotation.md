@@ -3,7 +3,8 @@ layout: post
 title:  "Spring-05 Annotation"
 description: 
 date:   2020-07-27
-categories: Spring Annotation
+categories: Spring
+tags: Wiring
 ---
 Autowire is to load the _field_ in beans automatically instead of bean itself.
 

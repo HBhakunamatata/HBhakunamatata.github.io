@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "UploadFile in Tomcat"
-description: How to upload a file in Tomcat
+title: "UploadFile in Servlet"
+description: How to upload a file in Servlet
 date: 2020-07-21
 categories: Servlet
 ---
@@ -16,14 +16,14 @@ How to upload a file in Tomcat
 
 ```xml
 <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
-    <dependency>
-        <groupId>commons-fileupload</groupId>
-        <artifactId>commons-fileupload</artifactId>
-        <version>1.4</version>
+<dependency>
+    <groupId>commons-fileupload</groupId>
+    <artifactId>commons-fileupload</artifactId>
+    <version>1.4</version>
 </dependency>
 <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
 <dependency>
-        <groupId>commons-io</groupId>
+    <groupId>commons-io</groupId>
     <artifactId>commons-io</artifactId>
     <version>2.6</version>
 </dependency>

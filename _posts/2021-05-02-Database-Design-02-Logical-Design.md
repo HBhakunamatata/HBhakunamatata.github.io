@@ -3,7 +3,7 @@ layout: post
 title:  "Database-Design-02 Logical Design"
 description: 
 date:   2021-05-02
-categories: MySQL
+categories: Database-Design
 ---
 
 Requirement --> Logical Model --> ER picture (It is _Independent_ of DBMS)

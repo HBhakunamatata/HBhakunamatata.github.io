@@ -3,7 +3,7 @@ layout: post
 title:  "SpringMVC-03 Annotation"
 description: 
 date:   2020-08-03
-categories: SpringMVC Annotation
+categories: SpringMVC
 ---
 New three parts：context:component-scan / mvc:default-servlet-handler / mvc:annotation-driven
 

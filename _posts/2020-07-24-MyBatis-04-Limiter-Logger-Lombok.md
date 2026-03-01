@@ -3,7 +3,7 @@ layout: post
 title: "MyBatis-04 Logger and Limiter"
 description: 
 date: 2020-07-24
-categories: MyBatis Maven Log4J
+categories: MyBatis
 ---
 Use Log4J to record the state and Lombok to simplify the pojo.  
 There are several methods to implement the limiter in MyBatis.

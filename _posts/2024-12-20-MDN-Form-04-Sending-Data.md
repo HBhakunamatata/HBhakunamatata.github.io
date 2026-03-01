@@ -3,7 +3,8 @@ layout: post
 title: "MDN Form Sending Data"
 description: 
 date: 2024-12-20
-categories: Form
+categories: Frontend
+tags: Form
 ---
 
 ## 1. Sending Files

@@ -3,7 +3,8 @@ layout: post
 title:  "Spring-04 Dependency Injection (Autowiring)"
 description: 
 date:   2020-07-27
-categories: Spring Autowire
+categories: Spring
+tags: Wiring
 ---
 Autowiring is a kind of DI to simplify the register of beans.
 

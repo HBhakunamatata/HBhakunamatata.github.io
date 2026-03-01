@@ -2,11 +2,9 @@
 layout: post
 title:  "Maven Note"
 date:   2020-01-10
-description:
-categories: Java Maven
+categories: Dependency-Management
+tags: Maven
 ---
-How to use Maven
-
 
 ## 1.What is mvn
 
