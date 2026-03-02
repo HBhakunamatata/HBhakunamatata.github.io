@@ -60,3 +60,11 @@ body {
 		margin-right: 6px;
 	}
 }
+
+.aside-tag {
+	text-decoration: underline;
+	&:hover {
+		text-decoration: none;
+		border-bottom: 0;
+	}
+}

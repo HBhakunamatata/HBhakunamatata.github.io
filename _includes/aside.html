@@ -79,3 +79,66 @@
         {% endfor %}
     </ul>
 </div> -->
+
+<div class="bg-light" id="recent-posts">
+    <div class="d-flex ps-3 pt-2 border-bottom border-2 border-secondary">
+        <p class="h4 p-2">
+            <i class="bi bi-list-check me-2"></i>
+            Tags
+        </p>
+    </div>
+    
+    <div class="tag-cloud container p-3">
+        {% capture tag_string %}
+            {% for tag in site.tags %}
+                {% comment %} 使用 0 填充数量以确保字符串排序正确（例如 0001, 0010） {% endcomment %}
+                {{ tag[1].size | prepend: "000000" | slice: -6, 6 }}::{{ tag[0] }}
+                {% unless forloop.last %}|{% endunless %}
+            {% endfor %}
+        {% endcapture %}
+
+        {% assign sorted_tag_array = tag_string | split: "|" | sort | reverse %}
+
+
+
+        {% assign tags = site.tags | sort %}
+        
+        {% comment %} 
+            1. 设定字号范围 (单位可自行修改，如 em 或 px) 
+        {% endcomment %}
+        {% assign min_font = 1.0 %}
+        {% assign max_font = 2.0 %}
+
+        {% comment %} 
+            2. 获取所有标签中文章数的最大值和最小值 
+        {% endcomment %}
+        {% assign max_count = 0 %}
+        {% assign min_count = 0 %}
+        {% for tag in tags %}
+            {% assign posts_count = tag[1].size %}
+            {% if posts_count > max_count %}{% assign max_count = posts_count %}{% endif %}
+            {% if posts_count < min_count or forloop.first %}{% assign min_count = posts_count %}{% endif %}
+        {% endfor %}
+
+        {% comment %} 
+            3. 循环计算每个标签的权重并渲染 
+        {% endcomment %}
+        {% for entry in sorted_tag_array %}
+            {% assign parts = entry | split: "::" %}
+            {% assign posts_count = parts[0] | plus: 0 %}
+            {% assign tag_name = parts[1] | strip %}
+            
+            {% comment %} 线性缩放公式：size = min + (count - min) * (max_font - min_font) / (max - min) {% endcomment %}
+            {% assign diff_count = max_count | minus: min_count %}
+            {% if diff_count == 0 %}
+            {% assign font_size = min_font %}
+            {% else %}
+            {% assign relative_count = posts_count | minus: min_count %}
+            {% assign font_size = relative_count | times: max_font | minus: min_font | divided_by: diff_count | plus: min_font %}
+            {% endif %}
+
+            <a class="aside-tag link-secondary" href="{{ site.baseurl }}/tags#{{ tag_name | slugify }}" 
+                style="font-size: {{ font_size }}rem; margin: 5px; ">{{ tag_name }}</a>
+        {% endfor %}
+    </div>
+</div>
