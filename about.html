@@ -1,0 +1,59 @@
+---
+layout: template
+title: About
+---
+
+<div class="row">
+    <div class="bg-light col-8 m-2 p-4">
+        <div>
+            {%- assign date_format = site.minima.date_format | default: "%Y-%m-%d" -%}
+            <div class="d-flex justify-content-center">
+                <h1>{{ page.title }}</h1>
+            </div>
+        </div>
+
+        <hr class="border border-1 border-secondary m-0 ">
+
+        <div class="card mt-3 mb-3">
+            <div class="card-header text-bg-primary">
+                About this Blog
+            </div>
+            <div class="card-body">
+                <p class="card-text lh-3">If you wanna use this blog as theme, 
+                    you could visit and fork <a href="https://github.com/HBhakunamatata/HBhakunamatata.github.io" target="_blank">my github</a>.</br>
+                    Welcome to leave some suggestion or create <a href="https://github.com/lichangke/lichangke.github.io/issues" target="_blank">
+                    issue here</a>.</p>
+            </div>
+        </div>
+
+        <div class="card mt-3 mb-3">
+            <div class="card-header text-bg-success">
+                About Me
+            </div>
+            <div class="card-body">
+                <figure>
+                    <blockquote class="blockquote text-center">
+                        <p>芝兰生于深谷，不以无人而不芳<br>君子修身养德，不以穷困而改志</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer text-end">
+                        A famous quote from <cite title="Source Title">the writings of Confucius and his disciples</cite>
+                    </figcaption>
+
+                    <p class="text-indent-2 lh-3">
+                        My main purposes in creating this blog are twofold: first, to practice front-end coding by creating web pages; 
+                        and second, to record my accumulated technical skills. Currently, my initial plan is for the blog to include 
+                        four sections: Algorithm, Review, Technique Tips, and Share (referencing the ARTS plan). 
+                        Through continuous technical accumulation, I hope to gradually become a senior software engineer. 
+                        I welcome everyone to join me and also welcome your feedback on my sharing.
+                    </p>
+                </figure>
+            </div>
+            <img src="{{ site.baseurl }}/assets/images/about-programmer.jpg" class="card-img-bottom" alt="This is an image of a programmer">
+        </div>
+        
+    </div>
+
+    <aside class="col m-2 p-10">
+        {% include aside.html %}
+    </aside>
+</div>

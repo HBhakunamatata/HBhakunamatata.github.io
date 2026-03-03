@@ -49,41 +49,10 @@
     </ul>
 </div>
 
-<!-- <div class="bg-light" id="recent-posts">
-    <div class="d-flex ps-3 pt-2 border-bottom border-2 border-secondary">
-        <p class="h4 p-2">
-            <i class="bi bi-list-check me-2"></i>
-            Tags
-        </p>
-    </div>
-    {% capture tag_string %}
-    {% for tag in site.tags %}
-        {% assign count = tag[1].size %}
-        {{ count }}|{{ tag[0] }}{% unless forloop.last %}::{% endunless %}
-    {% endfor %}
-    {% endcapture %}
-
-    {% comment %} 将字符串转为数组，倒序排列（从多到少）并循环 {% endcomment %}
-    {% assign sorted_tags = tag_string | split: "::" | sort | reverse %}
-    <ul class="container p-3">
-        {% for item in sorted_tags limit:8 %}
-        {% assign parts = item | split: "|" %}
-        {% assign count = parts[0] | plus: 0 %}
-        {% assign name = parts[1] %}
-        <li class="container ps-3 mt-1 d-flex justify-content-between">
-            <span class="h6">
-                {{ name | slugify }}
-            </span>
-            <span class="h6 badge text-bg-light">{{ count }}</span>
-        </li>
-        {% endfor %}
-    </ul>
-</div> -->
-
 <div class="bg-light" id="recent-posts">
     <div class="d-flex ps-3 pt-2 border-bottom border-2 border-secondary">
         <p class="h4 p-2">
-            <i class="bi bi-list-check me-2"></i>
+            <i class="bi bi-bookmarks me-2"></i>
             Tags
         </p>
     </div>
@@ -91,7 +60,7 @@
     <div class="tag-cloud container p-3">
         {% capture tag_string %}
             {% for tag in site.tags %}
-                {% comment %} 使用 0 填充数量以确保字符串排序正确（例如 0001, 0010） {% endcomment %}
+                {% comment %} 使用 0 填充数量以确保字符串排序正确（例如 0001, 0010) {% endcomment %}
                 {{ tag[1].size | prepend: "000000" | slice: -6, 6 }}::{{ tag[0] }}
                 {% unless forloop.last %}|{% endunless %}
             {% endfor %}
@@ -128,13 +97,13 @@
             {% assign posts_count = parts[0] | plus: 0 %}
             {% assign tag_name = parts[1] | strip %}
             
-            {% comment %} 线性缩放公式：size = min + (count - min) * (max_font - min_font) / (max - min) {% endcomment %}
+            {% comment %} 线性缩放公式: size = min + (count - min) * (max_font - min_font) / (max - min) {% endcomment %}
             {% assign diff_count = max_count | minus: min_count %}
             {% if diff_count == 0 %}
-            {% assign font_size = min_font %}
+                {% assign font_size = min_font %}
             {% else %}
-            {% assign relative_count = posts_count | minus: min_count %}
-            {% assign font_size = relative_count | times: max_font | minus: min_font | divided_by: diff_count | plus: min_font %}
+                {% assign relative_count = posts_count | minus: min_count %}
+                {% assign font_size = relative_count | times: max_font | minus: min_font | divided_by: diff_count | plus: min_font %}
             {% endif %}
 
             <a class="aside-tag link-secondary" href="{{ site.baseurl }}/tags#{{ tag_name | slugify }}" 
