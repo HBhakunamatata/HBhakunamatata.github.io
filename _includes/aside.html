@@ -27,7 +27,6 @@
     </div>
     {% capture category_string %}
     {% for category in site.categories %}
-        {% comment %} 将数量补齐为 4 位（如 0012），确保按字母序排序时也是数值序 {% endcomment %}
         {% assign count = category[1].size %}
         {{ count }}|{{ category[0] }}{% unless forloop.last %}::{% endunless %}
     {% endfor %}
@@ -40,9 +39,9 @@
         {% assign count = parts[0] | plus: 0 %}
         {% assign name = parts[1] %}
         <li class="container ps-3 mt-1 d-flex justify-content-between">
-            <span class="h6">
-                {{ name | slugify }}
-            </span>
+            <a class="h6" href="{{ site.baseurl }}/categories/#{{ name | slugify }}-arch">
+                {{ name | strip | escape }}
+            </a>
             <span class="h6 badge text-bg-light">{{ count }}</span>
         </li>
         {% endfor %}

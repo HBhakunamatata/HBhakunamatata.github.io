@@ -37,3 +37,17 @@ let a = SimpleJekyllSearch({
         </li>`,
     fuzzy: true
 })
+
+let hash = window.location.hash.substring(1).replace("-arch", "")
+console.log(hash)
+
+if (hash) {
+    console.log("Hash found: " + hash)
+    let buttonElement = $(`button[aria-controls=${hash}]`)[0]
+    let collapseElement = document.getElementById(hash)
+    if (buttonElement && collapseElement) {
+        console.log(buttonElement)
+        buttonElement.classList.remove("collapsed")
+        collapseElement.classList.add("show")
+    }
+}
