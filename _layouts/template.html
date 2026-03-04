@@ -19,16 +19,5 @@
 	</footer>
 	
 </body>
-<script src="{{ "/assets/js/bootstrap.js" | relative_url }}"></script>
-<script src="{{ "/assets/js/jquery-1.12.4.js" | relative_url }}"></script>
-<script src="{{ "/assets/js/simple-jekyll-search.js" | relative_url }}"></script>
-{% if page.title == 'Home' %}
-<script src="{{ "/assets/js/home.js" | relative_url }}"></script>
-{% endif%}
-{% if page.title == "Category" %}
-<script src="{{ "/assets/js/categories.js" | relative_url }}"></script>
-{% endif%}
-{% if page.title == "Tag" %}
-<script src="{{ "/assets/js/tags.js" | relative_url }}"></script>
-{% endif%}
+	{% include script.html %}
 </html>

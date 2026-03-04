@@ -1,45 +1,49 @@
 ---
 layout: template
-title: Home
 ---
 
-<div class="row">
-	<div class="bg-light col-8 m-2">
+<div class="row pt-2 pb-3">
+	<div class="bg-light col-8 ms-2 me-2 ps-4 pe-4">
 		<!-- 博客文章列表 -->
 		{% if paginator.posts.size > 0 %}
 		<ul id="results-container" class="posts list-group list-group-flush">
-			{% assign date_format = site.minima.date_format | default: "%Y-%m-%d" %}
 			{% for post in paginator.posts %}
 			<li class="border-bottom border-1 border-secondary p-2">
-				<div class="container">
-					<h3 class="pt-4 pb-4 mb-0">
-						<a class="post-title" href="{{ post.url | relative_url }}">
+				<div class="container pb-1">
+					<h3 class="pt-3 pb-4 m-0">
+						<a class="post-title m-0" href="{{ post.url | relative_url }}">
 							{{ post.title | escape }}
 						</a>
 					</h3>
 					
 					<div class="d-flex flex-row ps-1">
-						<div class="d-flex pe-3"><i class="bi bi-calendar-minus-fill pe-1"></i> {{ post.date | date: date_format }}</div>
+						<div class="d-flex pe-3"><i class="bi bi-calendar-minus-fill pe-1"></i> {{ post.date | date: "%Y-%m-%d" }}</div>
 						<div class="d-flex pe-3"><i class="bi bi-person-fill pe-1"></i>Bo Han</div>
+						{% if post.categories.size > 0 %}
 						<div class="d-flex pe-3">
 							<i class="bi bi-card-list pe-1"></i>
 							<ul class="list-inline">
-								{%- for category in post.categories -%}
-									<!-- <li class="list-inline-item badge rounded-pill text-bg-secondary">
-										<a class="color-light" href="{{ site.baseurl }}/tags#{{ tag | slugify }}">{{ tag }}</a>
-									</li> -->
-									<li class="list-inline-item badge text-bg-secondary">{{ category }}</li>
-								{%- endfor -%}
+								{% for category in post.categories %}
+									<li class="list-inline-item badge text-bg-secondary">
+										<a class="text-decoration-none color-light link-light" href="{{ site.baseurl }}/categories/#{{ category | slugify }}">{{ category }}</a>
+									</li>
+								{% endfor %}
 							</ul>
 						</div>
+						{% endif %}
+
+						{% if post.tags.size > 0 %}
 						<div class="d-flex pe-3">
-							<i class="bi bi-tags-fill pe-1"> </i>
+							<i class="bi bi-tags-fill pe-1"></i>
 							<ul class="list-inline">
 								{%- for tag in post.tags -%}
-									<li class="list-inline-item badge rounded-pill text-bg-secondary">{{ tag }}</li>
+									<li class="list-inline-item badge rounded-pill text-bg-secondary">
+										<a class="text-decoration-none color-light link-light" href="{{ site.baseurl }}/tags/#{{ tag | slugify }}">{{ tag }}</a>
+									</li>
 								{%- endfor -%}
 							</ul>
 						</div>
+						{% endif %}
 					</div>
 				</div>
 			</li>
@@ -55,7 +59,7 @@ title: Home
 				</li>
 				{% else %}
 				<li class="page-item disabled">
-					<a class="page-link" href="{{ paginator.previous_page_path }}">Previous</a>
+					<a class="page-link" href="{{ paginator.previous_page_path }}">Prev</a>
 				</li>
 				{% endif %}
 
@@ -84,7 +88,8 @@ title: Home
 		</div>
 	</div>
 
-	<aside class="col m-2 p-10">
+	<aside class="col ms-2 me-2 p-10">
 		{% include aside.html %}
 	</aside>
+	
 </div>

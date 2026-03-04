@@ -2,7 +2,7 @@
 ---
 
 body {
-    padding-top: 6rem;
+    padding-top: 5rem;
 }
 
 .lower-bg {
@@ -69,6 +69,10 @@ body {
 	}
 }
 
-.text-indent-2 {
-    text-indent: 2em;
+.category-tag-hover {
+	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+		border-bottom: 0;
+	}
 }
