@@ -18,7 +18,7 @@
     {% endif %}
 </div>
 
-<div class="bg-light" id="recent-posts">
+<div class="bg-light" id="aside-categories">
     <div class="d-flex ps-3 pt-2 border-bottom border-2 border-secondary">
         <p class="h4 p-2">
             <i class="bi bi-list-check me-2"></i>
@@ -39,7 +39,7 @@
         {% assign count = parts[0] | plus: 0 %}
         {% assign name = parts[1] %}
         <li class="container ps-3 mt-1 d-flex justify-content-between">
-            <a class="h6" href="{{ site.baseurl }}/categories/#{{ name | slugify }}-arch">
+            <a class="h6 aside-category" href="{{ site.baseurl }}/categories/#{{ name | slugify }}-arch">
                 {{ name | strip | escape }}
             </a>
             <span class="h6 badge text-bg-light">{{ count }}</span>
@@ -105,7 +105,7 @@
                 {% assign font_size = relative_count | times: max_font | minus: min_font | divided_by: diff_count | plus: min_font %}
             {% endif %}
 
-            <a class="aside-tag link-secondary" href="{{ site.baseurl }}/tags#{{ tag_name | slugify }}" 
+            <a class="aside-tag link-secondary" href="{{ site.baseurl }}/tags#{{ tag_name | slugify }}-arch"
                 style="font-size: {{ font_size }}rem; margin: 5px; ">{{ tag_name }}</a>
         {% endfor %}
     </div>

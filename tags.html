@@ -1,6 +1,6 @@
 ---
 layout: template
-title: Tags
+title: Tag
 ---
 
 <div class="row">
@@ -12,12 +12,12 @@ title: Tags
             <div class="accordion" id="accordionExample">
                 {% for tag in site.tags %}
                 <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ tag | first }}" aria-expanded="true" aria-controls="{{ tag | first }}">
+                    <h2 id="{{ tag | first | slugify }}-arch" class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ tag | first | slugify }}" aria-expanded="true" aria-controls="{{ tag | first | slugify }}">
                             {{ tag | first }}
                         </button>
                     </h2>
-                    <div id="{{ tag | first }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div id="{{ tag | first | slugify }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                         <div class="accordion-body pt-3 pb-3">
                             <ul class="mb-0">
                                 {% for posts in tag  %}
