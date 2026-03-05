@@ -1,60 +1,56 @@
 
-<div class="container d-flex flex-nowrap">
-  <a class="navbar-brand" href="{{ site.baseurl }}/">
-    <img alt="This is a logo about this website" src="{{ site.baseurl }}/assets/images/blog-slogan.png" height="45px">
-    Bo Han's Blog
-  </a>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="{{ site.baseurl }}/">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ site.baseurl }}/categories.html">Category</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ site.baseurl }}/tags.html">Tags</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ site.baseurl }}/about.html">About</a>
-      </li>
-    </ul>
-  </div>
+<div class="container d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+    <a class="navbar-brand" href="{{ site.baseurl }}/">
+        <img alt="This is a logo about this website" src="{{ site.baseurl }}/assets/images/blog-slogan.png" height="45px">
+            Bo Han's Blog
+    </a>
 
-  <div class="d-flex nav-split">
-    <form class="d-flex" role="search">
-      <input id="search-input" class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
-    </form>
-  </div>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ site.baseurl }}/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ site.baseurl }}/categories.html">Category</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ site.baseurl }}/tags.html">Tags</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ site.baseurl }}/about.html">About</a>
+            </li>
+        </ul>
+    </div>
 
-  <div class="d-flex fs-4">
-    <ul class="navbar-nav">
-      {% if site.social_links.github %}
-			<li class="nav-item">
-				<a class="nav-link" href="https://github.com/{{ site.social_links.github }}">
-				  <i class="bi bi-github"></i>
-        </a>
-			</li>
-      {% endif %}
-      {% if site.social_links.linkedIn %}
-      <li class="nav-item">
-        <a class="nav-link" href="https://linkedin.com/{{ site.social_links.linkedIn }}">
-          <i class="bi bi-linkedin"></i>
-        </a>
-      </li>
-      {% endif %}
-      {% if site.social_links.mail %}
-      <li class="nav-item">
-        <a class="nav-link" href="https://{{ site.social_links.mail }}">
-          <i class="bi bi-envelope-at"></i>
-        </a>
-      </li>
-      {% endif %}
+    <div class="nav-split row-cols-lg-auto g-3  col-12 col-lg-auto mb-3 mb-lg-0 me-lg-2 pe-3" role="search">
+        <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-search"></i></span>
+            <input id="search-input" class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
+        </div>
+    </div>
+
+    <ul class="navbar-nav fs-4">
+        {% if site.social_links.github %}
+        <li class="nav-item">
+            <a class="nav-link" href="https://github.com/{{ site.social_links.github }}">
+                <i class="bi bi-github"></i>
+            </a>
+        </li>
+        {% endif %}
+        {% if site.social_links.linkedIn %}
+        <li class="nav-item">
+            <a class="nav-link" href="https://linkedin.com/{{ site.social_links.linkedIn }}">
+                <i class="bi bi-linkedin"></i>
+            </a>
+        </li>
+        {% endif %}
+        {% if site.social_links.mail %}
+        <li class="nav-item">
+            <a class="nav-link" href="https://{{ site.social_links.mail }}">
+                <i class="bi bi-envelope-at"></i>
+            </a>
+        </li>
+        {% endif %}
     </ul>
-  </div>
   
 </div>
