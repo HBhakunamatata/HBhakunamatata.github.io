@@ -6,7 +6,7 @@ layout: template
 	<div class="bg-light col-8 ms-2 me-2 ps-4 pe-4">
 		<!-- 博客文章列表 -->
 		{% if paginator.posts.size > 0 %}
-		<ul id="results-container" class="posts list-group list-group-flush">
+		<ul id="default-container" class="posts list-group list-group-flush">
 			{% for post in paginator.posts %}
 			<li class="border-bottom border-1 border-secondary p-2">
 				<div class="container pb-1">
@@ -50,6 +50,9 @@ layout: template
 			{% endfor %}
 		</ul>
 		{% endif %}
+
+		<ul id="results-container" class="posts list-group list-group-flush" style="display: none;">
+		</ul>
 
 		<div id="pagination" class="container mt-4 mb-4">
 			<ul class="pagination justify-content-center">

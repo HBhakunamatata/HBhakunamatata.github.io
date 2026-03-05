@@ -22,5 +22,23 @@ let a = SimpleJekyllSearch({
                 </div>
             </div>
         </li>`,
-    fuzzy: true
+    fuzzy: false
 })
+
+// 监听输入，清空时显示默认列表
+let searchInput = document.getElementById('search-input');
+let defaultContainer = document.getElementById('default-container');
+let resultsContainer = document.getElementById('results-container');
+let paginationContainer = document.getElementById('pagination');
+searchInput.addEventListener('input', function() {
+  if (this.value.trim() === '') {
+    defaultContainer.style.display = 'block';
+    resultsContainer.style.display = 'none';
+    resultsContainer.innerHTML = '';
+    paginationContainer.style.display = 'block';
+  } else {
+    defaultContainer.style.display = 'none';
+    resultsContainer.style.display = 'block';
+    paginationContainer.style.display = 'none';
+  }
+});
