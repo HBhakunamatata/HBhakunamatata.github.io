@@ -15,42 +15,8 @@ You can download jekyll themes on [website](http://jekyllthemes.org/) and custom
 - Well if you want to test the performance before committing, you need to install ruby, gem and bundle etc. And run below commands in your shell:
 
 ```shell
+bundle exec jekyll clean
 bundle exec jekyll serve --livereload
-```
-
-## Usage
-
-There are several customed items in file `_config.yml`
-
-<!-- **Comments (Disqus)**
-
-Comments on posts can be enabled by specifying your disqus_shortname under texture in `_config.yml`. For example,
-```yaml
-texture:
-  disqus_shortname: games
-``` -->
-
-<!-- **Google Analytics**
-
-It can be enabled by specifying your analytics id under texture in `_config.yml`
-```yaml
-texture:
-  analytics_id: '< YOUR ID >'
-``` -->
-
-**Toggle Excerpts**
-
-Excerpts can be enabled by adding the following line
-
-```yaml
-show_excerpts: true
-```
-
-**Toggle Navbar**
-
-```yaml
-texture:
-  showNav: true
 ```
 
 ## Future works
@@ -60,14 +26,14 @@ texture:
 | 0 | Design a Logo | [&radic;] |
 | 1 | Add links for navbar | [&radic;] |
 | 2 | Add authenritation info in footer | [&times;] |
-| 3 | Add functions to conditionally search posts | [&times;] |
+| 3 | Add functions to conditionally search posts | [&radic;] |
 | 4 | Add pagination for posts | [&radic;] |
-| 5 | Add category map in the right of home | [&times;] |
+| 5 | Add category map in the right of home | [&radic;] |
 | 6 | Add recently or relative post in the right of post | [&radic;] |
 | 7 | Redesign the font style of markdown content (font / highlight.css) | [&radic;] |
 | 8 | Remove the blank line in the top of header and main section | [&radic;] |
 | 9 | Add return back button in the post layout | [&times;] |
 | 10 | Add background and two-line-layout for home and post pages | [&radic;] |
-| 11 | Redesign and add about page | [&times;] |
+| 11 | Redesign and add about page | [&radic;] |
 | 12 | Redesign and add 404 page | [&times;] |
 | 13 | Deal with errors and warnings about jekyll and etc | [&times;] |
