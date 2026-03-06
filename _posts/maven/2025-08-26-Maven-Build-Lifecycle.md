@@ -22,7 +22,7 @@ validate compile test package verify install deploy
 
 ## 1.3 Plugin and its Goals
 
-![maven-plugins](../images/mavenplugins.webp)
+![maven-plugins](/assets/post-images/maven/mavenplugins.webp)
 
 Each plugin has one or more goals, each goal can bind to one or more phase. If a goal is bound to no phase, the goal can only be triggered by command-line.
 

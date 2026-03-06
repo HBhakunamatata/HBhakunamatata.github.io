@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Git Practice 02"
+title: "Git Practice"
 description: 
 date: 2024-09-20
 categories: Version-Control

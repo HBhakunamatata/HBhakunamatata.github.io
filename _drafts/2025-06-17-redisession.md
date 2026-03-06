@@ -71,7 +71,7 @@ Process finished with exit code 130
 
 1. Redis auth failed
 
-![alt text](企业微信截图_17501281731477.png)
+![alt text](assets/post-images/企业微信截图_17501281731477.png)
 
 when connecting redis, set the username is empty.
 
@@ -83,7 +83,7 @@ redisson github issue, https://github.com/redisson/redisson/issues/1030
 
 原因：Redisson不会主动调用销毁的方法，肯定是Spring容器调用的
 
-![alt text](企业微信截图_17501280317253.png)
+![alt text](assets/post-images/企业微信截图_17501280317253.png)
 
 change TaskServiceImpl code from @Autowired into @Resource to import bean accurately.
 

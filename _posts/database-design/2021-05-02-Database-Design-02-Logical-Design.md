@@ -8,7 +8,7 @@ categories: Database-Design
 
 Requirement --> Logical Model --> ER picture (It is _Independent_ of DBMS)
 
-![image-20210503142107645](/assets/post-images/database_design/image-logical-design.png)
+![image-20210503142107645](/assets/post-images/database-design/image-logical-design.png)
 
 
 ## 2.1 Exception and Data Redundancy
@@ -54,7 +54,7 @@ Update Exception :
 - Fields are primitive type and cannot be divided.
 - In other words, tables are two-dimensional tables.
 
-![image-20210503151302350](/assets/post-images/database_design/image-paradigm01.png)
+![image-20210503151302350](/assets/post-images/database-design/image-paradigm01.png)
 
 
 ### 2.2.2 No.2 paradigm
@@ -75,13 +75,13 @@ unique index --> (goods name + supplier name)
 - update  exception
 - data redundancy
 
-![image-20210503200731854](/assets/post-images/database_design/image-paradigm-02-solve.png)
+![image-20210503200731854](/assets/post-images/database-design/image-paradigm-02-solve.png)
 
 ### 2.2.3 No.3 Paradigm
 
 - 表中非关键字段对任意组合关键字段不存在传递函数依赖。
 
-![image-20210503201325470](/assets/post-images/database_design/image-paradigm-03.png)
+![image-20210503201325470](/assets/post-images/database-design/image-paradigm-03.png)
 
 (goods name) --> (category) --> (category description)
 
@@ -90,13 +90,13 @@ unique index --> (goods name + supplier name)
 - update exception
 - data redundancy
 
-![image-20210503202118222](/assets/post-images/database_design/image-paradigm-03-solve.png)
+![image-20210503202118222](/assets/post-images/database-design/image-paradigm-03-solve.png)
 
 ### 2.2.4 BC Paradigm
 
 - 任意字段（关键、非关键）不存在对组合关键字段的传递依赖。
 
-![image-20210504095247801](/assets/post-images/database_design/image-paradigm-bc.png)
+![image-20210504095247801](/assets/post-images/database-design/image-paradigm-bc.png)
 
 (supplier name + goods id) --> (supplier contact, quantity)
 
@@ -104,7 +104,7 @@ unique index --> (goods name + supplier name)
 
 $\Rightarrow$ (supplier name) <--> (supplier contact)
 
-![image-20210504100012552](/assets/post-images/database_design/image-paradigm-bc-solve.png)
+![image-20210504100012552](/assets/post-images/database-design/image-paradigm-bc-solve.png)
 
 ## Note
 

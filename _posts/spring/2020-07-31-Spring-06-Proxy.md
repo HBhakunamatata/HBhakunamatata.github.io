@@ -10,7 +10,7 @@ Static and Dynamic Proxy
 
 - a pic to illustrate Proxy Pattern
 
-![Proxy](/image/spring/Proxy.jpg)
+![Proxy](/assets/post-images/spring/Proxy.jpg)
 
 ## 1. Interface : Rent
 

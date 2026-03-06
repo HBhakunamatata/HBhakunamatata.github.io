@@ -10,3 +10,6 @@
 {% if page.title == "Tag" %}
 <script src="{{ "/assets/js/tags.js" | relative_url }}"></script>
 {% endif%}
+{% if page.layout == "post" %}
+<script src="{{ "/assets/js/post.js" | relative_url }}"></script>
+{% endif%}

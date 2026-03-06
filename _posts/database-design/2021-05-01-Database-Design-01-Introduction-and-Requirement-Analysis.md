@@ -60,7 +60,7 @@ categories: Database-Design
 
 1.3.6 entries relations
 
-![image-relation](E:\git_pro\HBhakunamatata.github.io\_posts\images\database_design\image-relations.png)
+![image-relation](/images/database-design/image-relations.png)
 
 ## Note
 

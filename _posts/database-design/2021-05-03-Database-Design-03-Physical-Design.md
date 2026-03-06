@@ -33,7 +33,7 @@ DBMS --> database,table,column naming --> fields choose --> De-normalization
 - 数字型 --> 日期 / 二进制 --> 字符型
 - 相同级别的按存储空间从小到大
 
-![image-20210504131120665](/assets/post-images/database_design/image-field-size.png)
+![image-20210504131120665](/assets/post-images/database-design/image-field-size.png)
 
 ### 3.3.2 Reason
 

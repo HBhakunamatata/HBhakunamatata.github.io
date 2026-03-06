@@ -59,7 +59,7 @@ WHERE a.table_name=’customer’
 
 - 使用主键hash
 
-![image-20210504144957579](/assets/post-images/database_design/image-split-horizontally.png)
+![image-20210504144957579](/assets/post-images/database-design/image-split-horizontally.png)
 
 ## Note
 

@@ -20,7 +20,7 @@ Overview and Review to MyBatis
 
 ## How the MyBatis processes
 
-![mybatis-mechanism](/images/mybatis/mybatis-mechanism.png)
+![mybatis-mechanism](/assets/post-images/mybatis/mybatis-mechanism.png)
 
 ## The steps about how to use mybatis
 
@@ -30,4 +30,4 @@ Overview and Review to MyBatis
 
 - 1.correspondence issue
 
-![cor](/images/mybatis/correspondence.png)
+![cor](/assets/post-images/mybatis/correspondence.png)
